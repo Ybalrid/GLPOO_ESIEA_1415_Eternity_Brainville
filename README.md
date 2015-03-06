@@ -5,7 +5,7 @@ Projet GLPOO ESIEA 2014-2015 Eternity groupe Brainville
 
 Equipe : 
 - Brainville Arthur (Ybalrid)
-- Adam Romain       ()
+- Adam Romain       (lioncelest)
 - Chauvel Sébastien (Sinma)
 - Devaux Nicolas    (nisemono951)
 - Gattolin Nicolas  (ztenma)
