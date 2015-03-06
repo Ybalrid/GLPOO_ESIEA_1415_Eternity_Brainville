@@ -7,7 +7,7 @@ Equipe :
 - Brainville Arthur (Ybalrid)
 - Adam Romain       ()
 - Chauvel Sébastien (Sinma)
-- Devaux Nicolas    ()
+- Devaux Nicolas    (nisemono951)
 - Gattolin Nicolas  (ztenma)
 - Raullet Sébastien (granackPathos)
 - Ye Sylvie         (Shibiye)
