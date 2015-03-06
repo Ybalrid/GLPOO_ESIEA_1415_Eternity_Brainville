@@ -10,4 +10,4 @@ Equipe :
 - Devaux Nicolas    ()
 - Gattolin Nicolas  (ztenma)
 - Raullet Sébastien (granackPathos)
-- Ye Sylvie         ()
+- Ye Sylvie         (Shibiye)
