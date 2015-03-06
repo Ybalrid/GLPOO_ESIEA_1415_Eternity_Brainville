@@ -2,10 +2,10 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.glpoo.app</groupId>
     <packaging>jar</packaging>
-    <artifactId>Ethernity</artifactId>
+    <artifactId>Eternity</artifactId>
     <version>1</version>
 
-    <name>Ethernity</name>
+    <name>Eternity</name>
     
     <dependencies>
         <dependency>
