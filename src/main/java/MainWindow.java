@@ -12,29 +12,28 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 
-public class MainWindow {
+public class MainWindow extends JFrame implements ActionListener {
 	
-	private JFrame frame;
 	private int w = 1024;
 	private int h = 768;
-	
 	
 	private JMenuBar menuBar;
 	private JMenu menuFichier;
 	
-	private JMenuItem quitter_;
+	private JMenuItem itemQuitter;
 	
-	public MainWindow()
+	public MainWindow(String title)
 	{
-		frame = new JFrame("Eternity");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setMinimumSize(new Dimension(w,h));
-		frame.setBackground(Color.GRAY);
+		super(title);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setMinimumSize(new Dimension(w,h));
+		this.setBackground(Color.GRAY);
 		
 		constructMenu();
 		constructContent();
 
-		frame.setVisible(true);
+		this.pack();
+		this.setVisible(true);
 	}
 	
 	private void constructMenu()
@@ -43,28 +42,27 @@ public class MainWindow {
 		menuBar = new JMenuBar();
 		menuFichier = new JMenu("Fichier");
 		
-		quitter_ = new JMenuItem("Quitter");
-		quitter_.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				frame.dispose();
-			}
-		});		
+		itemQuitter = new JMenuItem("Quitter");
+		itemQuitter.addActionListener(this);		
 		
-		menuFichier.add(quitter_);
+		menuFichier.add(itemQuitter);
 		
 		menuBar.add(menuFichier);
 
-	    frame.setJMenuBar(menuBar);
+	    this.setJMenuBar(menuBar);
 	}
 	
 	private void constructContent()
 	{
-		Plateau p = new Plateau();
-		p.changeSize(200, 200);
+		Plateau p = new Plateau(new Dimension(200, 200));
 	
-		frame.add(p);
-		p.setVisible(true);
+		this.add(p);
+
 	}
+	
+	public void actionPerformed(ActionEvent arg0)
+	{
+		this.dispose();
+	}
+
 }
