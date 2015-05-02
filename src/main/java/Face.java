@@ -4,14 +4,14 @@ public class Face {
 	
 	private int id;
 	private String bgColor;
-	private String fgColors;
+	private String fgColor;
 	private String pattern;	
 	
 	public Face (int i, String bC, String fC, String p) 
 	{
 		this.id = i;
 		this.bgColor = bC;
-		this.fgColors = fC;
+		this.fgColor = fC;
 		this.pattern = p;
 	}
 
@@ -23,8 +23,8 @@ public class Face {
 		return bgColor;
 	}
 
-	public String getFgColors() {
-		return fgColors;
+	public String getFgColor() {
+		return fgColor;
 	}
 
 	public String getPattern() {

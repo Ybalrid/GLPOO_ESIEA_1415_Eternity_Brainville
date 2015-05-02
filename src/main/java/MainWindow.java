@@ -26,9 +26,10 @@ public class MainWindow extends JFrame implements ActionListener {
 	{
 		super("Eternity");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setMinimumSize(new Dimension(w,h));
+		this.setResizable(false);
+		//this.setMinimumSize(new Dimension(w,h));
 		// setPreferredSize rather than setSize because of layout manager
-		this.setPreferredSize(new Dimension(1000,600));
+		this.setPreferredSize(new Dimension(700,400));
 		this.setBackground(Color.GRAY);
 
 		constructMenu();
@@ -59,8 +60,8 @@ public class MainWindow extends JFrame implements ActionListener {
 		JPanel containerEast = new JPanel();
 		StockPanel stock = new StockPanel();
 		// size preferences only useful if not in BorderLayout.CENTER
-		containerEast.setPreferredSize(new Dimension(400, 600));
-		stock.setPreferredSize(new Dimension(400, 400));
+		containerEast.setPreferredSize(new Dimension(300, 600));
+		stock.setPreferredSize(new Dimension(300, 300));
 
 		containerEast.setLayout(new BorderLayout());
 		containerEast.add(stock, BorderLayout.NORTH);
