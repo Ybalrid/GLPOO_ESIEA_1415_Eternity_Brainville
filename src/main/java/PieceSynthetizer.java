@@ -44,8 +44,8 @@ public class PieceSynthetizer {
 		}
 		
 		graphics.setColor(Color.BLACK);
-		graphics.setStroke(new BasicStroke(3));
-		graphics.drawRect(1, 1, 99, 99);
+		graphics.setStroke(new BasicStroke(2));
+		graphics.drawRect(1, 1, 98, 98);
 		graphics.setStroke(new BasicStroke(0));
 		graphics.drawLine(1, 1, 99, 99);
 		graphics.drawLine(99, 1, 1, 99);

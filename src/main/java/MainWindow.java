@@ -33,13 +33,17 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 		super("Eternity");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
-		//this.setMinimumSize(new Dimension(w,h));
+		//this.getContentPane().setMinimumSize(new Dimension(w,h));
 		// setPreferredSize rather than setSize because of layout manager
-		this.setPreferredSize(new Dimension(700,400));
-		this.setBackground(Color.GRAY);
+		// The contentPane excludes the menu
+		this.getContentPane().setPreferredSize(new Dimension(700,400));
+		this.getContentPane().setBackground(Color.GREEN);
 
 		constructMenu();
 		constructContent();
+		
+		this.getContentPane().addMouseListener(this);
+		this.getContentPane().addMouseMotionListener(this);
 
 		this.setVisible(true);
 		this.pack();
@@ -68,13 +72,14 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 		
 		// size preferences only useful if not in BorderLayout.CENTER
 		this.containerEast.setPreferredSize(new Dimension(300, 600));
-		stock.setPreferredSize(new Dimension(300, 300));
+		this.stock.setPreferredSize(new Dimension(300, 300));
 
 		containerEast.setLayout(new BorderLayout());
 		containerEast.add(this.stock, BorderLayout.NORTH);
 		containerEast.add(new JPanel(), BorderLayout.CENTER);
 
-		this.setLayout(new BorderLayout());
+		// JFrame.add points to JContentPane.add
+		// ContentPane has BorderLayout by default
 		this.add(this.puzzle, BorderLayout.CENTER);
 		this.add(this.containerEast, BorderLayout.EAST);
 	}
@@ -90,22 +95,22 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-//		System.out.println("[Clicked] Point: " + e.getX() + ", " + e.getY());
+//		System.out.println("[Clicked] Point: " + e.getX() + ", " + e.getY() + " ");
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-//		System.out.println("[Entered] Point: " + e.getX() + ", " + e.getY());
+//		System.out.println("[Entered] Point: " + e.getX() + ", " + e.getY() + " ");
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-//		System.out.print("[Exited] ");// Point: " + e.getX() + ", " + e.getY());
+//		System.out.print("[Exited] ");// Point: " + e.getX() + ", " + e.getY() + " ");
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-//		System.out.println("[Pressed] Point: " + e.getX() + ", " + e.getY());
+		System.out.println("[Pressed] Point: " + e.getX() + ", " + e.getY() + " ");
 		
 		Vector2D mousePos = new Vector2D(e.getX(), e.getY());
 		DragInfo.setDragOrigin(mousePos);
@@ -116,18 +121,18 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-//		System.out.println("[Released] Point: " + e.getX() + ", " + e.getY());
+		System.out.println("[Released] Point: " + e.getX() + ", " + e.getY() + " ");
 		Vector2D mousePos = new Vector2D(e.getX(), e.getY());
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		System.out.print("[Moved] " + e.getX() + " " + e.getY());
+//		System.out.print("[Moved] " + e.getX() + " " + e.getY() + " ");
 	}
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-//		System.out.print("[Dragged] ");
+		System.out.print("[Dragged] ");
 		Vector2D mousePos = new Vector2D(e.getX(), e.getY());
 			
 		DragInfo.setLastMousePos (mousePos);
