@@ -12,14 +12,17 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-public class MainWindow extends JFrame implements ActionListener {
+public class MainWindow extends JFrame implements ActionListener, MouseListener, MouseMotionListener {
 
 	private int w = 800;
 	private int h = 600;
 
+	private PuzzlePanel puzzle;
+	private JPanel containerEast;
+	private StockPanel stock;
+
 	private JMenuBar menuBar;
 	private JMenu menuFichier;
-
 	private JMenuItem itemQuitter;
 
 	public MainWindow()
@@ -56,25 +59,76 @@ public class MainWindow extends JFrame implements ActionListener {
 
 	private void constructContent()
 	{
-		PuzzlePanel puzzle = new PuzzlePanel();
-		JPanel containerEast = new JPanel();
-		StockPanel stock = new StockPanel();
+		this.puzzle = new PuzzlePanel();
+		this.containerEast = new JPanel();
+		this.stock = new StockPanel();
+		
 		// size preferences only useful if not in BorderLayout.CENTER
-		containerEast.setPreferredSize(new Dimension(300, 600));
+		this.containerEast.setPreferredSize(new Dimension(300, 600));
 		stock.setPreferredSize(new Dimension(300, 300));
 
 		containerEast.setLayout(new BorderLayout());
-		containerEast.add(stock, BorderLayout.NORTH);
+		containerEast.add(this.stock, BorderLayout.NORTH);
 		containerEast.add(new JPanel(), BorderLayout.CENTER);
 
 		this.setLayout(new BorderLayout());
-		this.add(puzzle, BorderLayout.CENTER);
-		this.add(containerEast, BorderLayout.EAST);
+		this.add(this.puzzle, BorderLayout.CENTER);
+		this.add(this.containerEast, BorderLayout.EAST);
 	}
+
+	/*
+	 * Events response implementations
+	 */
 
 	public void actionPerformed(ActionEvent arg0)
 	{
 		this.dispose();
+	}
+	
+	@Override
+	public void mouseClicked(MouseEvent e) {
+//		System.out.println("[Clicked] Point: " + e.getX() + ", " + e.getY());
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+//		System.out.println("[Entered] Point: " + e.getX() + ", " + e.getY());
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+//		System.out.print("[Exited] ");// Point: " + e.getX() + ", " + e.getY());
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+//		System.out.println("[Pressed] Point: " + e.getX() + ", " + e.getY());
+		
+		Vector2D mousePos = new Vector2D(e.getX(), e.getY());
+		DragInfo.setDragOrigin(mousePos);
+		
+		DragInfo.setLastMousePos(mousePos);
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+//		System.out.println("[Released] Point: " + e.getX() + ", " + e.getY());
+		Vector2D mousePos = new Vector2D(e.getX(), e.getY());
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		System.out.print("[Moved] " + e.getX() + " " + e.getY());
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent e) {
+//		System.out.print("[Dragged] ");
+		Vector2D mousePos = new Vector2D(e.getX(), e.getY());
+			
+		DragInfo.setLastMousePos (mousePos);
+
 	}
 
 }
