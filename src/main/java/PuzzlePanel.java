@@ -32,9 +32,10 @@ public class PuzzlePanel extends JPanel {
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
 		
-		Face[] faces1 = {new Face(0, "blue", "purple", ""), new Face(0, "purple", "red", ""), new Face(0, "green", "blue", ""), new Face(0, "red", "yellow", "")};
+		Face[] faces1 = {new Face(0, "blue", "purple", "zigzag"), new Face(0, "purple", "red", "circle"), new Face(0, "green", "blue", "triangle"), new Face(0, "red", "yellow", "")};
 		Face[] faces2 = {new Face(0, "", "", ""), new Face(0, "yellow", "red", ""), new Face(0, "yellow", "green", ""), new Face(0, "purple", "red", "")};
 		Piece[] pieces = {new Piece(0, faces1, 0, 0, 0), new Piece(0, faces2, 0, 0, 0)};
+		
 		
 		for (int i = 0; i < pieces.length; i++)
 		{

@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.Shape;
 import java.awt.geom.GeneralPath;
+import java.awt.geom.Ellipse2D;
 import java.awt.BasicStroke;
 
 /** Creates pieces by generating graphics given textual characteristics */
@@ -23,6 +24,8 @@ public class PieceSynthetizer {
 		Graphics2D graphics = img.createGraphics();
 		int[][] xBgPoints = {{0, 100, 50}, {100, 100, 50}, {0, 100, 50}, {0, 0, 50}};
 		int[][] yBgPoints = {{0, 0, 50}, {0, 100, 50}, {100, 100, 50}, {0, 100, 50}};
+		
+		graphics.setStroke(new BasicStroke(0));
 		
 		for (int orientation = 0; orientation < 4; orientation++)
 		{
@@ -66,7 +69,7 @@ public class PieceSynthetizer {
 				color = Color.BLACK; 
 			break;
 		}
-		System.out.println("translate color: " + color);
+		System.out.println("Translate color: " + color);
 		return color;
 	}
 	
@@ -75,11 +78,31 @@ public class PieceSynthetizer {
 		GeneralPath shape = new GeneralPath();
 		switch (patternName.toLowerCase())
 		{
-			
-			case "zigzag":
-				
+			case "triangle":
+				shape.moveTo(30, 0);
+				shape.lineTo(70, 0);
+				shape.lineTo(50, 20);
+				shape.closePath();
+			break;
 			case "circle":
+				shape = new GeneralPath(new Ellipse2D.Float(35, 5, 30, 30));
+			break;
+			case "zigzag":
+				shape.moveTo(35, 0);
+				shape.lineTo(45, 10);
+				shape.lineTo(35, 20);
+				shape.lineTo(45, 30);
+				shape.lineTo(35, 40);
 				
+				shape.lineTo(50, 50);
+				 
+				shape.lineTo(65, 40);
+				shape.lineTo(55, 30);
+				shape.lineTo(65, 20);
+				shape.lineTo(55, 10);
+				shape.lineTo(65, 0);
+				shape.closePath();
+			break;
 			case "line":
 				shape.moveTo(40, 0);
 				shape.lineTo(60, 0);
@@ -94,10 +117,10 @@ public class PieceSynthetizer {
 				shape.lineTo(60, 40);
 				shape.lineTo(40, 40);
 				shape.closePath();
-				//shape = GeneralPath(new Rectangle()); 
+				//shape = new GeneralPath(new Rectangle()); 
 			break;
 		}
-		//System.out.println("translate pattern: " + shape);
+		//System.out.println("Translate pattern: " + shape);
 		return shape;
 	}
 	

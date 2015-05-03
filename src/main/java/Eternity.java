@@ -1,6 +1,5 @@
 package main.java;
 
-
 public class Eternity {
 
 	public static void main(String[] args) {
