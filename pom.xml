@@ -7,6 +7,13 @@
 
     <name>Eternity</name>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<slf4j.version>1.6.1</slf4j.version>
+	</properties>
+
     <dependencies>
 
         <dependency>
