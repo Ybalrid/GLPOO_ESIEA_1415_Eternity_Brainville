@@ -143,7 +143,7 @@ public class Vector2D implements Comparable<Vector2D> {
      */
 	public float getLength () {
 		
-		return Math.sqrt(this.x * this.x + this.y * this.y);
+		return (float)Math.sqrt(this.x * this.x + this.y * this.y);
 	}
 
 
@@ -178,7 +178,7 @@ public class Vector2D implements Comparable<Vector2D> {
 		if (this.getSqrdLength() == 0)
 			return 0;
 		
-		return Math.atan2(this.y, this.x);
+		return (float)Math.atan2(this.y, this.x);
 	}
 	
 	public void setAngle (float theta) {
@@ -195,7 +195,7 @@ public class Vector2D implements Comparable<Vector2D> {
      */
 	public float angleTo (Vector2D other) {
 		
-		return Math.atan2(this.crossProduct(other), this.dotProduct(other));
+		return (float)Math.atan2(this.crossProduct(other), this.dotProduct(other));
 	}
 	
 	/**
@@ -203,8 +203,8 @@ public class Vector2D implements Comparable<Vector2D> {
      */
 	public void rotate (float theta) {
 		
-		float cosTheta = Math.cos(theta);
-		float sinTheta = Math.sin(theta);
+		float cosTheta = (float)Math.cos(theta);
+		float sinTheta = (float)Math.sin(theta);
 		
 		this.x = this.x * cosTheta - this.y * sinTheta;
 		this.y = this.x * sinTheta + this.y * cosTheta;
@@ -215,10 +215,10 @@ public class Vector2D implements Comparable<Vector2D> {
      */
 	public Vector2D rotated (float theta) {
 //		float len = this.getLength();	
-//		return new Vector2D(len * Math.cos(theta), len * Math.sin(theta));
+//		return new Vector2D(len * (float)Math.cos(theta), len * (float)Math.sin(theta));
 		
-		float cosTheta = Math.cos(theta);
-		float sinTheta = Math.sin(theta);
+		float cosTheta = (float)Math.cos(theta);
+		float sinTheta = (float)Math.sin(theta);
 		
 		return new Vector2D(this.x * cosTheta - this.y * sinTheta,this.x * sinTheta + this.y * cosTheta);
 	}
