@@ -4,40 +4,25 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.image.BufferedImage;
-import java.awt.Container;
+import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 
 public class CellPanel extends JPanel {
-	
-	private Container container;
-	private BufferedImage img;
-	
-	public CellPanel(Container container) {
-		this.container = container;
+
+	public CellPanel(MainWindow container)
+	{
+		this.addMouseListener(container);
+		this.setLayout(new BorderLayout());
 	}
-	
+
 	@Override
-	public void paintComponent(Graphics g) {
+	public void paintComponent(Graphics g)
+	{
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
-		
-		System.out.println("cell width & height: " + this.getWidth() + " " +this.getHeight());
-		if (this.img != null) {
-			int pw = this.getWidth(), ph = this.getHeight();		
-			int iw = this.img.getWidth(), ih = this.img.getHeight();
-			g2.drawImage(this.img, (pw - iw)/2, (ph - ih)/2, 100, 100, null);
-		}
+
 	}
-	
-	public BufferedImage getImg() {
-		return this.img;
-	}
-	
-	public void setImg(BufferedImage img) {
-		this.img = img;
-	}	
 }
