@@ -11,9 +11,13 @@ public class DragInfo {
 	/** Position at which dragging began. */
 	private static Vector2D originPos;
 	private static JComponent origin;
+	private static JComponent destination;
 	private static JComponent selected;
 
 	public static void init () {
+		origin = null;
+		destination = null;
+		selected = null;
 		lastMousePos = new Vector2D();
 		originPos = new Vector2D();
 	}
@@ -42,11 +46,25 @@ public class DragInfo {
 		origin = _origin;
 	}
 
+	public static JComponent getDestination() {
+		return destination;
+	}
+
+	public static void setDestination(JComponent _destination) {
+		destination = _destination;
+	}
+
 	public static JComponent getSelected() {
 		return selected;
 	}
 
 	public static void setSelected(JComponent selectedPanel) {
 		selected = selectedPanel;
+	}
+
+	public static void reset() {
+		setSelected(null);
+		setOrigin(null);
+		setDestination(null);
 	}
 }

@@ -2,6 +2,7 @@ package main.java;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -50,6 +51,9 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 
 		this.setVisible(true);
 		this.pack();
+
+		DragInfo.init();
+		this.addMouseMotionListener(this);
 	}
 
 	private void constructMenu()
@@ -87,7 +91,7 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 		this.add(this.containerEast, BorderLayout.EAST);
 
 		this.cellPanels = new CellPanel[16];
-		for (int i = 0; i < 16; i++) {
+		for (int i = 0; i < 5; i++) {
 			CellPanel p = new CellPanel(this);
 			p.setBackground(new Color(i * 16 + 15, i * 16 + 15, i * 16 + 15));
 			this.puzzle.add(p);
@@ -130,6 +134,14 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 	@Override
 	public void mouseEntered(MouseEvent e) {
 //		System.out.println("[Entered] Point: " + e.getX() + ", " + e.getY() + " ");
+
+		if (DragInfo.getSelected() != null) {
+			if (e.getComponent() instanceof CellPanel) {
+				DragInfo.setDestination((CellPanel)e.getComponent());
+			} else if (e.getComponent() instanceof ImagePanel) {
+				DragInfo.setDestination(null);
+			}
+		}
 	}
 
 	@Override
@@ -142,14 +154,20 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 		Vector2D mousePos = new Vector2D(e.getX(), e.getY());
 		System.out.println("[Pressed] Point: " + mousePos + " ");
 
-		DragInfo.setOriginPos(mousePos);
-		DragInfo.setLastMousePos(mousePos);
+		ImagePanel selected = (ImagePanel)e.getComponent();
 
-		if (e.getComponent() instanceof ImagePanel) {
-			ImagePanel imgPanel = (ImagePanel)e.getComponent();
-			DragInfo.setSelected(imgPanel);
-			DragInfo.setOrigin((CellPanel)imgPanel.getParent());
-			System.out.println("Selected: " + imgPanel);
+		if (DragInfo.getSelected() == null && e.getComponent() instanceof ImagePanel) {
+			System.out.println("Press selected" + selected.getLocation());
+
+			CellPanel cell = (CellPanel)selected.getParent();
+			DragInfo.setSelected(selected);
+			DragInfo.setOrigin(cell);
+			DragInfo.setDestination(cell);
+			cell.remove(selected);
+			cell.repaint();
+			this.add(selected, 0);
+			this.repaint();
+			System.out.println("Selected: " + selected + " ");
 		}
 	}
 
@@ -157,17 +175,18 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 	public void mouseReleased(MouseEvent e) {
 		Vector2D mousePos = new Vector2D(e.getX(), e.getY());
 		System.out.println("[Released] Point: " + mousePos + " ");
+		//System.out.println("source: " + e.getComponent() + " " + this.getComponentAt(e.getX(), e.getY()) + " ");
 
-		if (e.getComponent() instanceof CellPanel) {
-			CellPanel cell = (CellPanel)e.getComponent();
-			ImagePanel selected = (ImagePanel)DragInfo.getSelected();
-			if (selected != null) {
-				cell.add(selected);
-				cell.repaint();
-				DragInfo.getOrigin().remove(selected);
-				DragInfo.getOrigin().repaint();
-				DragInfo.setSelected(null);
-				DragInfo.setOrigin(null);
+		CellPanel dest = (CellPanel)DragInfo.getDestination();
+		CellPanel origin = (CellPanel)DragInfo.getOrigin();
+		ImagePanel selected = (ImagePanel)DragInfo.getSelected();
+		if (selected != null) {
+			if (dest != null && dest != origin) {
+				this.remove(selected);
+				this.repaint();
+				dest.add(selected);
+				dest.repaint();
+				DragInfo.reset();
 				System.out.println("Unselected ");
 			}
 		}
@@ -183,10 +202,15 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		System.out.print("[Dragged] ");
+		System.out.print("[Dragged] " + e.getX() + " " + e.getY() + " ");
 		Vector2D mousePos = new Vector2D(e.getX(), e.getY());
 
-		DragInfo.setLastMousePos (mousePos);
+		ImagePanel selected = (ImagePanel)DragInfo.getSelected();
+		if (selected != null) {
+			System.out.println("Drag selected: " + selected.getLocation());
+			Point parentPos = selected.getParent().getLocationOnScreen();
+			selected.setLocation(e.getXOnScreen() - (int)parentPos.getX() - selected.getWidth()/2, e.getYOnScreen() - (int)parentPos.getY() - selected.getHeight()/2);
+		}
 
 	}
 

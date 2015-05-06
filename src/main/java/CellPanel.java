@@ -13,6 +13,7 @@ public class CellPanel extends JPanel {
 	public CellPanel(MainWindow container)
 	{
 		this.addMouseListener(container);
+		this.addMouseMotionListener(container);
 		this.setLayout(new BorderLayout());
 	}
 

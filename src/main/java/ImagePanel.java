@@ -15,6 +15,7 @@ public class ImagePanel extends JPanel {
 
 	public ImagePanel(MainWindow container) {
 		this.addMouseListener(container);
+		this.addMouseMotionListener(container);
 	}
 
 	@Override
