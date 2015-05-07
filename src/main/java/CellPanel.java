@@ -5,15 +5,12 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.BorderLayout;
-
 import javax.swing.JPanel;
 
 public class CellPanel extends JPanel {
 
 	public CellPanel(MainWindow container)
 	{
-		this.addMouseListener(container);
-		this.addMouseMotionListener(container);
 		this.setLayout(new BorderLayout());
 	}
 

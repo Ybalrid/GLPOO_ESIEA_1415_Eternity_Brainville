@@ -12,10 +12,12 @@ import javax.swing.JPanel;
 public class ImagePanel extends JPanel {
 
 	private BufferedImage img;
+	private MainWindow container;
 
 	public ImagePanel(MainWindow container) {
 		this.addMouseListener(container);
 		this.addMouseMotionListener(container);
+		this.container = container;
 	}
 
 	@Override

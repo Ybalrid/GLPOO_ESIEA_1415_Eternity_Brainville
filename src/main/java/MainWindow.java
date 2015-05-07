@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.BorderLayout;
+import java.awt.Component;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -36,7 +37,7 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 	{
 		super("Eternity");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setResizable(false);
+		//this.setResizable(false);
 		//this.getContentPane().setMinimumSize(new Dimension(w,h));
 		// setPreferredSize rather than setSize because of layout manager
 		// The contentPane excludes the menu
@@ -46,13 +47,12 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 		constructMenu();
 		constructContent();
 
-		this.getContentPane().addMouseListener(this);
-		this.getContentPane().addMouseMotionListener(this);
-
 		this.setVisible(true);
 		this.pack();
 
 		DragInfo.init();
+
+		this.addMouseListener(this);
 		this.addMouseMotionListener(this);
 	}
 
@@ -166,6 +166,8 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 			cell.remove(selected);
 			cell.repaint();
 			this.add(selected, 0);
+			Point parentPos = selected.getParent().getLocationOnScreen();
+			selected.setLocation(e.getXOnScreen() - (int)parentPos.getX() - selected.getWidth()/2, e.getYOnScreen() - (int)parentPos.getY() - selected.getHeight()/2);
 			this.repaint();
 			System.out.println("Selected: " + selected + " ");
 		}
@@ -177,17 +179,24 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 		System.out.println("[Released] Point: " + mousePos + " ");
 		//System.out.println("source: " + e.getComponent() + " " + this.getComponentAt(e.getX(), e.getY()) + " ");
 
-		CellPanel dest = (CellPanel)DragInfo.getDestination();
 		CellPanel origin = (CellPanel)DragInfo.getOrigin();
 		ImagePanel selected = (ImagePanel)DragInfo.getSelected();
+
+		Point p = e.getComponent().getLocation();
+		e.translatePoint((int) p.getX(), (int) p.getY());
+		Component under = this.puzzle.getComponentAt(e.getX(), e.getY());
+
+		CellPanel dest = (under instanceof CellPanel)? (CellPanel)under : origin;
+		System.out.println("Destination: " + dest);
+		
 		if (selected != null) {
-			if (dest != null && dest != origin) {
+			if (dest != null) {
+				dest.add(selected, 0);
+				dest.validate();
 				this.remove(selected);
 				this.repaint();
-				dest.add(selected);
-				dest.repaint();
 				DragInfo.reset();
-				System.out.println("Unselected ");
+				System.out.println("Unselected " + selected.getLocation() + " " + dest.getComponent(0));
 			}
 		}
 
