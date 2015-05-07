@@ -154,22 +154,24 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 		Vector2D mousePos = new Vector2D(e.getX(), e.getY());
 		System.out.println("[Pressed] Point: " + mousePos + " ");
 
-		ImagePanel selected = (ImagePanel)e.getComponent();
+		if (e.getComponent() instanceof ImagePanel) {
+			ImagePanel selected = (ImagePanel)e.getComponent();
 
-		if (DragInfo.getSelected() == null && e.getComponent() instanceof ImagePanel) {
-			System.out.println("Press selected" + selected.getLocation());
+			if (DragInfo.getSelected() == null && e.getComponent() instanceof ImagePanel) {
+				System.out.println("Press selected" + selected.getLocation());
 
-			CellPanel cell = (CellPanel)selected.getParent();
-			DragInfo.setSelected(selected);
-			DragInfo.setOrigin(cell);
-			DragInfo.setDestination(cell);
-			cell.remove(selected);
-			cell.repaint();
-			this.add(selected, 0);
-			Point parentPos = selected.getParent().getLocationOnScreen();
-			selected.setLocation(e.getXOnScreen() - (int)parentPos.getX() - selected.getWidth()/2, e.getYOnScreen() - (int)parentPos.getY() - selected.getHeight()/2);
-			this.repaint();
-			System.out.println("Selected: " + selected + " ");
+				CellPanel cell = (CellPanel)selected.getParent();
+				DragInfo.setSelected(selected);
+				DragInfo.setOrigin(cell);
+				DragInfo.setDestination(cell);
+				cell.remove(selected);
+				cell.repaint();
+				this.add(selected, 0);
+				Point parentPos = selected.getParent().getLocationOnScreen();
+				selected.setLocation(e.getXOnScreen() - (int)parentPos.getX() - selected.getWidth()/2, e.getYOnScreen() - (int)parentPos.getY() - selected.getHeight()/2);
+				this.repaint();
+				System.out.println("Selected: " + selected + " ");
+			}
 		}
 	}
 
@@ -182,14 +184,17 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 		CellPanel origin = (CellPanel)DragInfo.getOrigin();
 		ImagePanel selected = (ImagePanel)DragInfo.getSelected();
 
-		Point p = e.getComponent().getLocation();
-		e.translatePoint((int) p.getX(), (int) p.getY());
-		Component under = this.puzzle.getComponentAt(e.getX(), e.getY());
-
-		CellPanel dest = (under instanceof CellPanel)? (CellPanel)under : origin;
-		System.out.println("Destination: " + dest);
-		
 		if (selected != null) {
+			Point p = e.getComponent().getLocation();
+			e.translatePoint((int) p.getX(), (int) p.getY());
+			Component under = this.puzzle.getComponentAt(e.getX(), e.getY());
+
+			CellPanel dest;
+			if (under instanceof CellPanel && ((CellPanel)under).getComponentCount() == 0) {
+				dest = (CellPanel)under;
+			} else dest = origin;
+			System.out.println("Destination: " + dest);
+
 			if (dest != null) {
 				dest.add(selected, 0);
 				dest.validate();
@@ -199,7 +204,6 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 				System.out.println("Unselected " + selected.getLocation() + " " + dest.getComponent(0));
 			}
 		}
-
 	}
 
 	/* MouseMotionEvent */
