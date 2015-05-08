@@ -1,5 +1,7 @@
 package main.java;
 
+import java.util.ArrayList;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
@@ -16,14 +18,12 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 public class MainWindow extends JFrame implements ActionListener, MouseListener, MouseMotionListener {
 
-	private int w = 800;
-	private int h = 600;
-
 	private ImagePanel[] imgPanels;
-	private CellPanel[] cellPanels;
+	private ArrayList<DropTarget> dropTargets;
 
 	private PuzzlePanel puzzle;
 	private JPanel containerEast;
@@ -37,11 +37,11 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 	{
 		super("Eternity");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//this.setResizable(false);
+		this.setResizable(false);
 		//this.getContentPane().setMinimumSize(new Dimension(w,h));
 		// setPreferredSize rather than setSize because of layout manager
 		// The contentPane excludes the menu
-		this.getContentPane().setPreferredSize(new Dimension(700,400));
+		this.getContentPane().setPreferredSize(new Dimension(750,400));
 		this.getContentPane().setBackground(Color.GREEN);
 
 		constructMenu();
@@ -53,7 +53,7 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 		DragInfo.init();
 
 		this.addMouseListener(this);
-		this.addMouseMotionListener(this);
+		//this.addMouseMotionListener(this);
 	}
 
 	private void constructMenu()
@@ -78,8 +78,8 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 		this.stock = new StockPanel();
 
 		// size preferences only useful if not in BorderLayout.CENTER
-		this.containerEast.setPreferredSize(new Dimension(300, 600));
-		this.stock.setPreferredSize(new Dimension(300, 300));
+		this.containerEast.setPreferredSize(new Dimension(350, 600));
+		this.stock.setPreferredSize(new Dimension(350, 300));
 
 		containerEast.setLayout(new BorderLayout());
 		containerEast.add(this.stock, BorderLayout.NORTH);
@@ -90,25 +90,27 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 		this.add(this.puzzle, BorderLayout.CENTER);
 		this.add(this.containerEast, BorderLayout.EAST);
 
-		this.cellPanels = new CellPanel[16];
-		for (int i = 0; i < 5; i++) {
+		this.dropTargets = new ArrayList<DropTarget>(17);
+		this.dropTargets.add(stock);
+
+		for (int i = 0; i < 16; i++) {
 			CellPanel p = new CellPanel(this);
 			p.setBackground(new Color(i * 16 + 15, i * 16 + 15, i * 16 + 15));
-			this.puzzle.add(p);
-			this.cellPanels[i] = p;
+			this.puzzle.add(p, BorderLayout.WEST);
+			this.dropTargets.add(p);
 		}
 
 		this.imgPanels = new ImagePanel[16];
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 5; i++) {
 			ImagePanel p = new ImagePanel(this);
 			p.setBackground(Color.BLACK);
-			this.cellPanels[i].add(p);
+			this.stock.add(p, BorderLayout.WEST);
 			this.imgPanels[i] = p;
 		}
 
 		Face[] faces1 = {new Face(0, "blue", "purple", "zigzag"), new Face(0, "purple", "red", "circle"), new Face(0, "green", "blue", "triangle"), new Face(0, "red", "yellow", "")};
 		Face[] faces2 = {new Face(0, "", "", ""), new Face(0, "yellow", "red", ""), new Face(0, "yellow", "green", ""), new Face(0, "purple", "red", "")};
-		Piece[] pieces = {new Piece(0, faces1, 0, 0, 0), new Piece(0, faces2, 0, 0, 0)};
+		Piece[] pieces = {new Piece(0, faces1, 0, 0, 0), new Piece(0, faces2, 0, 0, 0), new Piece(0, faces1, 0, 0, 0), new Piece(0, faces2, 0, 0, 0)};
 
 		for (int i = 0; i < pieces.length; i++)
 		{
@@ -134,14 +136,6 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 	@Override
 	public void mouseEntered(MouseEvent e) {
 //		System.out.println("[Entered] Point: " + e.getX() + ", " + e.getY() + " ");
-
-		if (DragInfo.getSelected() != null) {
-			if (e.getComponent() instanceof CellPanel) {
-				DragInfo.setDestination((CellPanel)e.getComponent());
-			} else if (e.getComponent() instanceof ImagePanel) {
-				DragInfo.setDestination(null);
-			}
-		}
 	}
 
 	@Override
@@ -154,24 +148,18 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 		Vector2D mousePos = new Vector2D(e.getX(), e.getY());
 		System.out.println("[Pressed] Point: " + mousePos + " ");
 
-		if (e.getComponent() instanceof ImagePanel) {
-			ImagePanel selected = (ImagePanel)e.getComponent();
-
-			if (DragInfo.getSelected() == null && e.getComponent() instanceof ImagePanel) {
-				System.out.println("Press selected" + selected.getLocation());
-
-				CellPanel cell = (CellPanel)selected.getParent();
-				DragInfo.setSelected(selected);
-				DragInfo.setOrigin(cell);
-				DragInfo.setDestination(cell);
-				cell.remove(selected);
-				cell.repaint();
-				this.add(selected, 0);
-				Point parentPos = selected.getParent().getLocationOnScreen();
-				selected.setLocation(e.getXOnScreen() - (int)parentPos.getX() - selected.getWidth()/2, e.getYOnScreen() - (int)parentPos.getY() - selected.getHeight()/2);
-				this.repaint();
-				System.out.println("Selected: " + selected + " ");
-			}
+		if (e.getComponent() instanceof DragTarget && DragInfo.getSelected() == null) {
+			DragTarget selected = (DragTarget)e.getComponent();
+			DropTarget target = (DropTarget)selected.getParent();
+			DragInfo.setSelected(selected);
+			DragInfo.setOrigin(target);
+			Point globalPos = SwingUtilities.convertPoint(selected, e.getPoint(), this.getContentPane());
+			selected.setLocation(globalPos.x - selected.getWidth()/2, globalPos.y - selected.getHeight()/2);
+			target.remove(selected);
+			target.repaint();
+			this.add(selected, 0);
+			this.repaint();
+			System.out.println("Selected: " + selected + " ");
 		}
 	}
 
@@ -179,30 +167,36 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 	public void mouseReleased(MouseEvent e) {
 		Vector2D mousePos = new Vector2D(e.getX(), e.getY());
 		System.out.println("[Released] Point: " + mousePos + " ");
-		//System.out.println("source: " + e.getComponent() + " " + this.getComponentAt(e.getX(), e.getY()) + " ");
 
-		CellPanel origin = (CellPanel)DragInfo.getOrigin();
-		ImagePanel selected = (ImagePanel)DragInfo.getSelected();
+		DropTarget origin = DragInfo.getOrigin();
+		DragTarget selected = DragInfo.getSelected();
 
 		if (selected != null) {
-			Point p = e.getComponent().getLocation();
-			e.translatePoint((int) p.getX(), (int) p.getY());
-			Component under = this.puzzle.getComponentAt(e.getX(), e.getY());
+			Point p = e.getPoint();
+			DropTarget dest = origin;
 
-			CellPanel dest;
-			if (under instanceof CellPanel && ((CellPanel)under).getComponentCount() == 0) {
-				dest = (CellPanel)under;
-			} else dest = origin;
+			for (DropTarget target : this.dropTargets) {
+				p = SwingUtilities.convertPoint(e.getComponent(), e.getPoint(), target);
+				if (target.contains(p)) {
+					dest = target;
+				}
+			}
 			System.out.println("Destination: " + dest);
 
-			if (dest != null) {
+			// Swap the two pieces if drag into already occupied DropTarget
+			if (!dest.acceptMultipleChilds() && dest.getComponentCount() != 0) {
+				DragTarget destContent = (DragTarget)dest.getComponent(0);
+				origin.add(destContent, 0);
+				dest.remove(destContent);
+				dest.add(selected);
+			} else { // Place the piece in the DropTarget
 				dest.add(selected, 0);
-				dest.validate();
-				this.remove(selected);
-				this.repaint();
-				DragInfo.reset();
-				System.out.println("Unselected " + selected.getLocation() + " " + dest.getComponent(0));
 			}
+			dest.validate();
+			this.remove(selected);
+			this.repaint();
+			DragInfo.reset();
+			System.out.println("Unselected " + selected.getLocation() + " " + dest.getComponent(0));
 		}
 	}
 
@@ -218,11 +212,11 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 		System.out.print("[Dragged] " + e.getX() + " " + e.getY() + " ");
 		Vector2D mousePos = new Vector2D(e.getX(), e.getY());
 
-		ImagePanel selected = (ImagePanel)DragInfo.getSelected();
+		DragTarget selected = DragInfo.getSelected();
 		if (selected != null) {
 			System.out.println("Drag selected: " + selected.getLocation());
-			Point parentPos = selected.getParent().getLocationOnScreen();
-			selected.setLocation(e.getXOnScreen() - (int)parentPos.getX() - selected.getWidth()/2, e.getYOnScreen() - (int)parentPos.getY() - selected.getHeight()/2);
+			Point globalPos = SwingUtilities.convertPoint(selected, e.getPoint(), this.getContentPane());
+			selected.setLocation(globalPos.x - selected.getWidth()/2, globalPos.y - selected.getHeight()/2);
 		}
 
 	}

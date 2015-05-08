@@ -7,7 +7,7 @@ import java.awt.RenderingHints;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
-public class CellPanel extends JPanel {
+public class CellPanel extends DropTarget {
 
 	public CellPanel(MainWindow container)
 	{
@@ -18,9 +18,11 @@ public class CellPanel extends JPanel {
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-		Graphics2D g2 = (Graphics2D)g;
-		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-				RenderingHints.VALUE_ANTIALIAS_ON);
 
+	}
+
+	@Override
+	public boolean acceptMultipleChilds() {
+		return false;
 	}
 }

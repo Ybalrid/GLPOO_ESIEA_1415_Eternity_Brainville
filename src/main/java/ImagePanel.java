@@ -1,6 +1,7 @@
 package main.java;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -9,7 +10,7 @@ import java.awt.Container;
 
 import javax.swing.JPanel;
 
-public class ImagePanel extends JPanel {
+public class ImagePanel extends DragTarget {
 
 	private BufferedImage img;
 	private MainWindow container;
@@ -18,6 +19,7 @@ public class ImagePanel extends JPanel {
 		this.addMouseListener(container);
 		this.addMouseMotionListener(container);
 		this.container = container;
+		this.setPreferredSize(new Dimension(100,100));
 	}
 
 	@Override
