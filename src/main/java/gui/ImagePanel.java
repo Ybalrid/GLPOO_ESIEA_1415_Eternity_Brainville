@@ -35,9 +35,9 @@ public class ImagePanel extends DragTarget {
 		if (this.img != null) {
 			int pw = this.getWidth(), ph = this.getHeight();
 			int iw = this.img.getWidth(), ih = this.img.getHeight();
-			g2.rotate(rotation, 50, 50);
-			g2.drawImage(this.img, (pw - iw)/2, (ph - ih)/2, 100, 100, null);
 			g2.rotate(-rotation, 50, 50);
+			g2.drawImage(this.img, (pw - iw)/2, (ph - ih)/2, 100, 100, null);
+			g2.rotate(rotation, 50, 50);
 		}
 	}
 
@@ -53,7 +53,7 @@ public class ImagePanel extends DragTarget {
 		return this.rotation;
 	}
 	public void rotate(boolean clockwise) {
-		this.rotation += (clockwise ? -Math.PI/2 : Math.PI);
+		this.rotation += (clockwise ? -Math.PI/2 : Math.PI/2);
 		this.repaint();
 	}
 }
