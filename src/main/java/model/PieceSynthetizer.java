@@ -12,11 +12,6 @@ import java.awt.BasicStroke;
 /* TODO: support a scale factor ? */
 public class PieceSynthetizer {
 
-	public PieceSynthetizer()
-	{
-
-	}
-
 	public static BufferedImage synthetize(Piece piece)
 	{
 		Face[] faces = piece.getFaces();

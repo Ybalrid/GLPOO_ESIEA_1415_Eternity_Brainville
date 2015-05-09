@@ -14,9 +14,10 @@ import main.java.gui.interaction.DragTarget;
 public class ImagePanel extends DragTarget {
 
 	private BufferedImage img;
-	private MainWindow container;
+	private double rotation; // Angle in radians
+	private InteractiveContainer container;
 
-	public ImagePanel(MainWindow container) {
+	public ImagePanel(InteractiveContainer container) {
 		this.addMouseListener(container);
 		this.addMouseMotionListener(container);
 		this.container = container;
@@ -34,7 +35,9 @@ public class ImagePanel extends DragTarget {
 		if (this.img != null) {
 			int pw = this.getWidth(), ph = this.getHeight();
 			int iw = this.img.getWidth(), ih = this.img.getHeight();
+			g2.rotate(rotation, 50, 50);
 			g2.drawImage(this.img, (pw - iw)/2, (ph - ih)/2, 100, 100, null);
+			g2.rotate(-rotation, 50, 50);
 		}
 	}
 
@@ -44,5 +47,13 @@ public class ImagePanel extends DragTarget {
 
 	public void setImg(BufferedImage img) {
 		this.img = img;
+	}
+
+	public double getRotation() {
+		return this.rotation;
+	}
+	public void rotate(boolean clockwise) {
+		this.rotation += (clockwise ? -Math.PI/2 : Math.PI);
+		this.repaint();
 	}
 }

@@ -2,62 +2,41 @@ package main.java.gui.interaction;
 
 import javax.swing.JComponent;
 
-import main.java.model.Vector2D;
 import main.java.gui.interaction.DragTarget;
 import main.java.gui.interaction.DropTarget;
 
 public class DragInfo {
 
-	/** A simple info handler for gragging parameters. */
+	/** A simple info handler for dragging parameters. */
 
-	/** Last position of the mouse on screen. Used to perform dragging. */
-	private static Vector2D lastMousePos;
-	/** Position at which dragging began. */
-	private static Vector2D originPos;
-	private static DropTarget origin;
-	private static DragTarget selected;
+	// Component that contained the selection when dragging started
+	private DropTarget origin;
+	// Component that is dragged
+	private DragTarget selected;
 
-	public static void init () {
-		origin = null;
-		selected = null;
-		lastMousePos = new Vector2D();
-		originPos = new Vector2D();
+	public DragInfo () {
+		this.origin = null;
+		this.selected = null;
 	}
 
-	public static Vector2D getLastMousePos() {
-		return lastMousePos;
+	public DropTarget getOrigin() {
+		return this.origin;
 	}
 
-	public static void setLastMousePos(Vector2D _lastMousePos) {
-		lastMousePos = _lastMousePos;
+	public void setOrigin(DropTarget _origin) {
+		this.origin = _origin;
 	}
 
-	public static Vector2D getOriginPos() {
-		return originPos;
+	public DragTarget getSelected() {
+		return this.selected;
 	}
 
-	public static void setOriginPos(Vector2D _originPos) {
-		originPos = _originPos;
+	public void setSelected(DragTarget selectedPanel) {
+		this.selected = selectedPanel;
 	}
 
-	public static DropTarget getOrigin() {
-		return origin;
-	}
-
-	public static void setOrigin(DropTarget _origin) {
-		origin = _origin;
-	}
-
-	public static DragTarget getSelected() {
-		return selected;
-	}
-
-	public static void setSelected(DragTarget selectedPanel) {
-		selected = selectedPanel;
-	}
-
-	public static void reset() {
-		setSelected(null);
-		setOrigin(null);
+	public void reset() {
+		this.setSelected(null);
+		this.setOrigin(null);
 	}
 }

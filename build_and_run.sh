@@ -8,7 +8,7 @@ fi
 [ -d bin ] || mkdir ./bin/
 
 [[ $(ls bin | wc -l) > 0 ]] && rm -r bin/*
-javac -cp lib/*:bin -d bin src/main/java/*.java
+javac -cp lib/*:bin -d bin $(find src/main/java/ -type f)
 #jar -vcfm Eternity.jar Manifest.mf README.md LICENSE.txt build_and_run.* bin/ lib/ src/
 java -cp lib/*:bin main.java.Eternity
 

@@ -10,7 +10,7 @@ import main.java.gui.interaction.DropTarget;
 
 public class CellPanel extends DropTarget {
 
-	public CellPanel(MainWindow container)
+	public CellPanel()
 	{
 		this.setLayout(new BorderLayout());
 	}
