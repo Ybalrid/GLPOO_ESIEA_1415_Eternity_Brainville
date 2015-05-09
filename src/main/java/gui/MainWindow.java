@@ -12,7 +12,7 @@ import javax.swing.JMenuItem;
 
 public class MainWindow extends JFrame implements ActionListener {
 
-	private InteractiveContainer interactiveContainer;
+	private GamePanel gamePanel;
 
 	private JMenuBar menuBar;
 	private JMenu menuPartie;
@@ -25,10 +25,10 @@ public class MainWindow extends JFrame implements ActionListener {
 		this.setResizable(false);
 
 		this.constructMenu();
-		this.interactiveContainer = new InteractiveContainer();
+		this.gamePanel = new GamePanel();
 		// JFrame.add points to JContentPane.add
 		// ContentPane has BorderLayout by default
-		this.add(this.interactiveContainer);
+		this.add(this.gamePanel);
 
 		this.setVisible(true);
 		this.pack();

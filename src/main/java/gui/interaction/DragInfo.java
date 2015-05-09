@@ -12,11 +12,11 @@ public class DragInfo {
 	// Component that contained the selection when dragging started
 	private DropTarget origin;
 	// Component that is dragged
-	private DragTarget selected;
+	private DragTarget selection;
 
 	public DragInfo () {
 		this.origin = null;
-		this.selected = null;
+		this.selection = null;
 	}
 
 	public DropTarget getOrigin() {
@@ -27,16 +27,16 @@ public class DragInfo {
 		this.origin = _origin;
 	}
 
-	public DragTarget getSelected() {
-		return this.selected;
+	public DragTarget getSelection() {
+		return this.selection;
 	}
 
-	public void setSelected(DragTarget selectedPanel) {
-		this.selected = selectedPanel;
+	public void setSelection(DragTarget selectionPanel) {
+		this.selection = selectionPanel;
 	}
 
 	public void reset() {
-		this.setSelected(null);
+		this.setSelection(null);
 		this.setOrigin(null);
 	}
 }

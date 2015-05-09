@@ -28,9 +28,9 @@ import main.java.gui.interaction.DragTarget;
 import main.java.gui.interaction.DropTarget;
 import main.java.gui.interaction.KeyShortcuts;
 
-public class InteractiveContainer extends JPanel implements MouseListener, MouseMotionListener {
+public class GamePanel extends JPanel implements MouseListener, MouseMotionListener {
 
-	private ImagePanel[] imgPanels;
+	private PiecePanel[] piecePanels; // Graphical components representing pieces
 	private ArrayList<DropTarget> dropTargets;
 
 	private PuzzlePanel puzzle;
@@ -39,7 +39,7 @@ public class InteractiveContainer extends JPanel implements MouseListener, Mouse
 
 	private DragInfo dragInfo;
 
-	public InteractiveContainer()
+	public GamePanel()
 	{
 		// setPreferredSize rather than setSize because of layout manager
 		// The contentPane excludes the menu
@@ -63,7 +63,6 @@ public class InteractiveContainer extends JPanel implements MouseListener, Mouse
 		this.add(this.containerEast, BorderLayout.EAST);
 
 		this.dropTargets = new ArrayList<DropTarget>(17);
-		this.dropTargets.add(stock);
 
 		for (int i = 0; i < 16; i++) {
 			CellPanel p = new CellPanel();
@@ -71,13 +70,14 @@ public class InteractiveContainer extends JPanel implements MouseListener, Mouse
 			this.puzzle.add(p, BorderLayout.WEST);
 			this.dropTargets.add(p);
 		}
+		this.dropTargets.add(stock);
 
-		this.imgPanels = new ImagePanel[16];
+		this.piecePanels = new PiecePanel[16];
 		for (int i = 0; i < 7; i++) {
-			ImagePanel p = new ImagePanel(this);
+			PiecePanel p = new PiecePanel(this);
 			p.setBackground(Color.BLACK);
 			this.stock.add(p, BorderLayout.WEST);
-			this.imgPanels[i] = p;
+			this.piecePanels[i] = p;
 		}
 
 		this.createPieces();
@@ -96,8 +96,7 @@ public class InteractiveContainer extends JPanel implements MouseListener, Mouse
 
 		for (int i = 0; i < pieces.length; i++)
 		{
-			this.imgPanels[i].setImg(PieceSynthetizer.synthetize(pieces[i]));
-			this.imgPanels[i].repaint();
+			this.piecePanels[i].setPiece(pieces[i]);
 		}
 	}
 
@@ -105,8 +104,8 @@ public class InteractiveContainer extends JPanel implements MouseListener, Mouse
 		return this.dragInfo;
 	}
 
-	public void rotateSelected(boolean clockwise) {
-		((ImagePanel)this.dragInfo.getSelected()).rotate(clockwise);
+	public void rotateSelection(boolean clockwise) {
+		((PiecePanel)this.dragInfo.getSelection()).rotate(clockwise);
 	}
 
 	/*
@@ -130,33 +129,34 @@ public class InteractiveContainer extends JPanel implements MouseListener, Mouse
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		System.out.println("[Pressed] Point: " + e.getPoint() + " ");
+		Point globalPos = SwingUtilities.convertPoint(e.getComponent(), e.getPoint(), this);
+		System.out.print("[Pressed] (" + globalPos.x + "," + globalPos.y + ") ");
 
 		this.dragInfo.reset();
 
-		if (e.getComponent() instanceof DragTarget && this.dragInfo.getSelected() == null) {
-			DragTarget selected = (DragTarget)e.getComponent();
-			DropTarget target = (DropTarget)selected.getParent();
-			this.dragInfo.setSelected(selected);
+		if (e.getComponent() instanceof DragTarget && this.dragInfo.getSelection() == null) {
+			DragTarget selection = (DragTarget)e.getComponent();
+			DropTarget target = (DropTarget)selection.getParent();
+			this.dragInfo.setSelection(selection);
 			this.dragInfo.setOrigin(target);
-			Point globalPos = SwingUtilities.convertPoint(selected, e.getPoint(), this);
-			selected.setLocation(globalPos.x - selected.getWidth()/2, globalPos.y - selected.getHeight()/2);
-			target.remove(selected);
+			selection.setLocation(globalPos.x - selection.getWidth()/2, globalPos.y - selection.getHeight()/2);
+			target.remove(selection);
 			target.repaint();
-			this.add(selected, 0);
+			this.add(selection, 0);
 			this.repaint();
-			System.out.println("Selected: " + selected + " ");
+			//System.out.println("Selection: " + selection + " ");
 		}
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		System.out.println("[Released] Point: " + e.getPoint() + " ");
+		Point globalPos = SwingUtilities.convertPoint(e.getComponent(), e.getPoint(), this);
+		System.out.println("[Released] (" + globalPos.x + "," + globalPos.y + ") ");
 
 		DropTarget origin = this.dragInfo.getOrigin();
-		DragTarget selected = this.dragInfo.getSelected();
+		DragTarget selection = this.dragInfo.getSelection();
 
-		if (selected != null) {
+		if (selection != null) {
 			Point p = e.getPoint();
 			DropTarget dest = origin;
 
@@ -166,7 +166,7 @@ public class InteractiveContainer extends JPanel implements MouseListener, Mouse
 					dest = target;
 				}
 			}
-			System.out.println("Destination: " + dest);
+			//System.out.println("Destination: " + dest);
 
 			// Swap the two pieces if drag into already occupied DropTarget
 			if (!dest.acceptMultipleChilds() && dest.getComponentCount() != 0) {
@@ -174,16 +174,15 @@ public class InteractiveContainer extends JPanel implements MouseListener, Mouse
 				origin.add(destContent, 0);
 				origin.validate();
 				dest.remove(destContent);
-				dest.add(selected);
+				dest.add(selection);
 				dest.validate();
 			} else { // Place the piece in the DropTarget
-				dest.add(selected, 0);
+				dest.add(selection, 0);
 				dest.validate();
 			}
-			this.remove(selected);
+			this.remove(selection);
 			this.repaint();
-			//this.dragInfo.reset();
-			System.out.println("Unselected " + selected.getLocation() + " " + dest.getComponent(0));
+			//System.out.println("Unselection " + selection.getLocation() + " " + dest.getComponent(0));
 		}
 	}
 
@@ -196,13 +195,13 @@ public class InteractiveContainer extends JPanel implements MouseListener, Mouse
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		System.out.print("[Dragged] " + e.getPoint() + " ");
+		System.out.print("[Dragged] ");// + e.getPoint() + " ");
 
-		DragTarget selected = this.dragInfo.getSelected();
-		if (selected == e.getComponent()) {
-			System.out.println("Drag selected: " + selected.getLocation());
-			Point globalPos = SwingUtilities.convertPoint(selected, e.getPoint(), this);
-			selected.setLocation(globalPos.x - selected.getWidth()/2, globalPos.y - selected.getHeight()/2);
+		DragTarget selection = this.dragInfo.getSelection();
+		if (selection == e.getComponent()) {
+			//System.out.println("Drag selection: " + selection.getLocation());
+			Point globalPos = SwingUtilities.convertPoint(selection, e.getPoint(), this);
+			selection.setLocation(globalPos.x - selection.getWidth()/2, globalPos.y - selection.getHeight()/2);
 		}
 
 	}

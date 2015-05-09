@@ -9,15 +9,18 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
+import main.java.model.Piece;
+import main.java.model.PieceSynthetizer;
 import main.java.gui.interaction.DragTarget;
 
-public class ImagePanel extends DragTarget {
+public class PiecePanel extends DragTarget {
 
+	private Piece piece;
 	private BufferedImage img;
 	private double rotation; // Angle in radians
-	private InteractiveContainer container;
+	private GamePanel container;
 
-	public ImagePanel(InteractiveContainer container) {
+	public PiecePanel(GamePanel container) {
 		this.addMouseListener(container);
 		this.addMouseMotionListener(container);
 		this.container = container;
@@ -41,12 +44,14 @@ public class ImagePanel extends DragTarget {
 		}
 	}
 
-	public BufferedImage getImg() {
-		return this.img;
+	public Piece getPiece() {
+		return this.piece;
 	}
 
-	public void setImg(BufferedImage img) {
-		this.img = img;
+	public void setPiece(Piece piece) {
+		this.piece = piece;
+		this.img = PieceSynthetizer.synthetize(piece);
+		this.repaint();
 	}
 
 	public double getRotation() {

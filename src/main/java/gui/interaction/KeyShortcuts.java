@@ -8,15 +8,14 @@ import javax.swing.InputMap;
 import javax.swing.ActionMap;
 import javax.swing.KeyStroke;
 
-import main.java.gui.InteractiveContainer;
-import main.java.gui.ImagePanel;
+import main.java.gui.GamePanel;
 import main.java.gui.interaction.DragTarget;
 
 public class KeyShortcuts {
 
-	private InteractiveContainer comp;
+	private GamePanel comp;
 
-	public KeyShortcuts(InteractiveContainer comp) {
+	public KeyShortcuts(GamePanel comp) {
 		this.comp = comp;
 
 		InputMap inputMap = comp.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
@@ -33,15 +32,15 @@ public class KeyShortcuts {
 
 	private class RotateClockwiseAction extends AbstractAction {
 		@Override public void actionPerformed(ActionEvent e) {
-			System.out.println("RotateClockwiseAction");
-			comp.rotateSelected(true);
+			System.out.println("[RotateClockwise]");
+			comp.rotateSelection(true);
 		}
 	}
 
 	private class RotateCounterClockwiseAction extends AbstractAction {
 		@Override public void actionPerformed(ActionEvent e) {
-			System.out.println("RotateCounterClockwiseAction");
-			comp.rotateSelected(false);
+			System.out.println("[RotateCounterClockwise]");
+			comp.rotateSelection(false);
 		}
 	}
 }
