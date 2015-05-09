@@ -20,7 +20,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import main.java.model.Vector2D;
 import main.java.model.Face;
 import main.java.model.Piece;
 import main.java.model.PieceSynthetizer;
@@ -92,7 +91,8 @@ public class InteractiveContainer extends JPanel implements MouseListener, Mouse
 
 		Face[] faces1 = {new Face(0, "blue", "purple", "zigzag"), new Face(0, "purple", "red", "circle"), new Face(0, "green", "blue", "triangle"), new Face(0, "red", "yellow", "")};
 		Face[] faces2 = {new Face(0, "", "", ""), new Face(0, "yellow", "red", ""), new Face(0, "yellow", "green", ""), new Face(0, "purple", "red", "")};
-		Piece[] pieces = {new Piece(0, faces1, 0, 0, 0), new Piece(0, faces2, 0, 0, 0), new Piece(0, faces1, 0, 0, 0), new Piece(0, faces2, 0, 0, 0)};
+		Face[] faces3 = {new Face(0, "purple", "red", "circle"), new Face(0, "blue", "purple", "zigzag"), new Face(0, "", "", ""), new Face(0, "", "", "")};
+		Piece[] pieces = {new Piece(0, faces1, 0, 0, 0), new Piece(0, faces2, 0, 0, 0), new Piece(0, faces1, 0, 0, 0), new Piece(0, faces3, 0, 0, 0), new Piece(0, faces2, 0, 0, 0)};
 
 		for (int i = 0; i < pieces.length; i++)
 		{
@@ -103,6 +103,10 @@ public class InteractiveContainer extends JPanel implements MouseListener, Mouse
 
 	public DragInfo getDragInfo() {
 		return this.dragInfo;
+	}
+
+	public void rotateSelected(boolean clockwise) {
+		((ImagePanel)this.dragInfo.getSelected()).rotate(clockwise);
 	}
 
 	/*
@@ -126,8 +130,7 @@ public class InteractiveContainer extends JPanel implements MouseListener, Mouse
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		Vector2D mousePos = new Vector2D(e.getX(), e.getY());
-		System.out.println("[Pressed] Point: " + mousePos + " ");
+		System.out.println("[Pressed] Point: " + e.getPoint() + " ");
 
 		this.dragInfo.reset();
 
@@ -148,8 +151,7 @@ public class InteractiveContainer extends JPanel implements MouseListener, Mouse
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		Vector2D mousePos = new Vector2D(e.getX(), e.getY());
-		System.out.println("[Released] Point: " + mousePos + " ");
+		System.out.println("[Released] Point: " + e.getPoint() + " ");
 
 		DropTarget origin = this.dragInfo.getOrigin();
 		DragTarget selected = this.dragInfo.getSelected();
@@ -194,8 +196,7 @@ public class InteractiveContainer extends JPanel implements MouseListener, Mouse
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		System.out.print("[Dragged] " + e.getX() + " " + e.getY() + " ");
-		Vector2D mousePos = new Vector2D(e.getX(), e.getY());
+		System.out.print("[Dragged] " + e.getPoint() + " ");
 
 		DragTarget selected = this.dragInfo.getSelected();
 		if (selected == e.getComponent()) {

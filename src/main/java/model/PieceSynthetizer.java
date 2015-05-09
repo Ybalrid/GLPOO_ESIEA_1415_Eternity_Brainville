@@ -83,19 +83,17 @@ public class PieceSynthetizer {
 				shape = new GeneralPath(new Ellipse2D.Float(35, 5, 30, 30));
 			break;
 			case "zigzag":
-				shape.moveTo(35, 0);
-				shape.lineTo(45, 10);
-				shape.lineTo(35, 20);
-				shape.lineTo(45, 30);
-				shape.lineTo(35, 40);
+				shape.moveTo(50, 0);
+				shape.lineTo(35, 15);
+				shape.lineTo(45, 25);
+				shape.lineTo(35, 35);
 
 				shape.lineTo(50, 50);
 
-				shape.lineTo(65, 40);
-				shape.lineTo(55, 30);
-				shape.lineTo(65, 20);
-				shape.lineTo(55, 10);
-				shape.lineTo(65, 0);
+				shape.lineTo(65, 35);
+				shape.lineTo(55, 25);
+				shape.lineTo(65, 15);
+				shape.lineTo(50, 0);
 				shape.closePath();
 			break;
 			case "line":
