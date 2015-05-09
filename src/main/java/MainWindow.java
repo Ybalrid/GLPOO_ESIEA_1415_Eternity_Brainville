@@ -41,7 +41,7 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 		//this.getContentPane().setMinimumSize(new Dimension(w,h));
 		// setPreferredSize rather than setSize because of layout manager
 		// The contentPane excludes the menu
-		this.getContentPane().setPreferredSize(new Dimension(750,400));
+		this.getContentPane().setPreferredSize(new Dimension(720,400));
 		this.getContentPane().setBackground(Color.GREEN);
 
 		constructMenu();
@@ -78,8 +78,8 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 		this.stock = new StockPanel();
 
 		// size preferences only useful if not in BorderLayout.CENTER
-		this.containerEast.setPreferredSize(new Dimension(350, 600));
-		this.stock.setPreferredSize(new Dimension(350, 300));
+		this.containerEast.setPreferredSize(new Dimension(320, 600));
+		this.stock.setPreferredSize(new Dimension(320, 320));
 
 		containerEast.setLayout(new BorderLayout());
 		containerEast.add(this.stock, BorderLayout.NORTH);
@@ -101,7 +101,7 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 		}
 
 		this.imgPanels = new ImagePanel[16];
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 7; i++) {
 			ImagePanel p = new ImagePanel(this);
 			p.setBackground(Color.BLACK);
 			this.stock.add(p, BorderLayout.WEST);
@@ -187,12 +187,14 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 			if (!dest.acceptMultipleChilds() && dest.getComponentCount() != 0) {
 				DragTarget destContent = (DragTarget)dest.getComponent(0);
 				origin.add(destContent, 0);
+				origin.validate();
 				dest.remove(destContent);
 				dest.add(selected);
+				dest.validate();
 			} else { // Place the piece in the DropTarget
 				dest.add(selected, 0);
+				dest.validate();
 			}
-			dest.validate();
 			this.remove(selected);
 			this.repaint();
 			DragInfo.reset();
