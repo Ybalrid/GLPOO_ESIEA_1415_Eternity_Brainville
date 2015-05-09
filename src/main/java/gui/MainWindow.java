@@ -1,4 +1,4 @@
-package main.java;
+package main.java.gui;
 
 import java.util.ArrayList;
 
@@ -20,11 +20,20 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import main.java.model.Vector2D;
+import main.java.model.Face;
+import main.java.model.Piece;
+import main.java.model.PieceSynthetizer;
+import main.java.gui.interaction.DragInfo;
+import main.java.gui.interaction.DragTarget;
+import main.java.gui.interaction.DropTarget;
+
 public class MainWindow extends JFrame implements ActionListener, MouseListener, MouseMotionListener {
 
 	private ImagePanel[] imgPanels;
 	private ArrayList<DropTarget> dropTargets;
 
+	private JPanel baseContainer;
 	private PuzzlePanel puzzle;
 	private JPanel containerEast;
 	private StockPanel stock;
@@ -38,11 +47,6 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 		super("Eternity");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
-		//this.getContentPane().setMinimumSize(new Dimension(w,h));
-		// setPreferredSize rather than setSize because of layout manager
-		// The contentPane excludes the menu
-		this.getContentPane().setPreferredSize(new Dimension(720,400));
-		this.getContentPane().setBackground(Color.GREEN);
 
 		constructMenu();
 		constructContent();
@@ -73,6 +77,12 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 
 	private void constructContent()
 	{
+		this.baseContainer = new JPanel();
+		// setPreferredSize rather than setSize because of layout manager
+		// The contentPane excludes the menu
+		this.baseContainer.setPreferredSize(new Dimension(720,400));
+		this.baseContainer.setBackground(Color.GREEN);
+
 		this.puzzle = new PuzzlePanel();
 		this.containerEast = new JPanel();
 		this.stock = new StockPanel();
@@ -87,8 +97,9 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 
 		// JFrame.add points to JContentPane.add
 		// ContentPane has BorderLayout by default
-		this.add(this.puzzle, BorderLayout.CENTER);
-		this.add(this.containerEast, BorderLayout.EAST);
+		this.baseContainer.add(this.puzzle, BorderLayout.CENTER);
+		this.baseContainer.add(this.containerEast, BorderLayout.EAST);
+		this.add(this.baseContainer);
 
 		this.dropTargets = new ArrayList<DropTarget>(17);
 		this.dropTargets.add(stock);
@@ -120,8 +131,8 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 	}
 
 	/*
-	 * Events response implementations
-	 */
+	* Events response implementations
+	*/
 
 	public void actionPerformed(ActionEvent arg0)
 	{
@@ -153,7 +164,7 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 			DropTarget target = (DropTarget)selected.getParent();
 			DragInfo.setSelected(selected);
 			DragInfo.setOrigin(target);
-			Point globalPos = SwingUtilities.convertPoint(selected, e.getPoint(), this.getContentPane());
+			Point globalPos = SwingUtilities.convertPoint(selected, e.getPoint(), this.baseContainer);
 			selected.setLocation(globalPos.x - selected.getWidth()/2, globalPos.y - selected.getHeight()/2);
 			target.remove(selected);
 			target.repaint();
@@ -217,7 +228,7 @@ public class MainWindow extends JFrame implements ActionListener, MouseListener,
 		DragTarget selected = DragInfo.getSelected();
 		if (selected != null) {
 			System.out.println("Drag selected: " + selected.getLocation());
-			Point globalPos = SwingUtilities.convertPoint(selected, e.getPoint(), this.getContentPane());
+			Point globalPos = SwingUtilities.convertPoint(selected, e.getPoint(), this.baseContainer);
 			selected.setLocation(globalPos.x - selected.getWidth()/2, globalPos.y - selected.getHeight()/2);
 		}
 

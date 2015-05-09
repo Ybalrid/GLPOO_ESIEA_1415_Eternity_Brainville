@@ -1,11 +1,12 @@
-package main.java;
+package main.java.gui;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.BorderLayout;
-import javax.swing.JPanel;
+
+import main.java.gui.interaction.DropTarget;
 
 public class CellPanel extends DropTarget {
 

@@ -1,6 +1,10 @@
-package main.java;
+package main.java.gui.interaction;
 
 import javax.swing.JComponent;
+
+import main.java.model.Vector2D;
+import main.java.gui.interaction.DragTarget;
+import main.java.gui.interaction.DropTarget;
 
 public class DragInfo {
 

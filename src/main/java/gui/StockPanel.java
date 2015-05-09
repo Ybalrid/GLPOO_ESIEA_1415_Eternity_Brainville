@@ -1,12 +1,11 @@
-package main.java;
+package main.java.gui;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import main.java.gui.interaction.DropTarget;
 
 /** Panel that contains the stock of pieces */
 public class StockPanel extends DropTarget {

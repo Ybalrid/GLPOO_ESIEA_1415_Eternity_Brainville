@@ -1,13 +1,13 @@
-package main.java;
+package main.java.model;
 
 public class Piece {
-	
+
 	private int id;
 	private Face[] faces;
 	private int positionX;
 	private int positionY;
 	private int orientation;
-	
+
 	public Piece (int i, Face[] f, int pX, int pY, int o)
 	{
 		this.id = i;
@@ -36,5 +36,5 @@ public class Piece {
 	public int getOrientation() {
 		return orientation;
 	}
-	
+
 }
