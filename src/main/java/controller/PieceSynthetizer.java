@@ -2,6 +2,7 @@ package main.java.controller;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.awt.Shape;
 import java.awt.geom.GeneralPath;
@@ -23,6 +24,7 @@ public class PieceSynthetizer {
 		int[][] xBgPoints = {{0, 100, 50}, {100, 100, 50}, {0, 100, 50}, {0, 0, 50}};
 		int[][] yBgPoints = {{0, 0, 50}, {0, 100, 50}, {100, 100, 50}, {0, 100, 50}};
 
+		//graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING,				RenderingHints.VALUE_ANTIALIAS_ON);
 		graphics.setStroke(new BasicStroke(0));
 
 		for (int orientation = 0; orientation < 4; orientation++)
@@ -57,6 +59,7 @@ public class PieceSynthetizer {
 		Color color;
 		switch (colorName.toLowerCase())
 		{
+			case "white": color = new Color(255, 255, 255); break;
 			case "blue": color = new Color(50, 120, 255); break;
 			case "red": color = new Color(255, 50, 50); break;
 			case "green": color = new Color(30, 255, 80); break;

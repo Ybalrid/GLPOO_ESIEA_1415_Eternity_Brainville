@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import main.java.model.Piece;
+import main.java.controller.Game;
 import main.java.gui.interaction.DragInfo;
 import main.java.gui.interaction.DragTarget;
 import main.java.gui.interaction.DropTarget;
@@ -28,7 +29,7 @@ import main.java.gui.interaction.KeyShortcuts;
 
 public class GamePanel extends JPanel implements MouseListener, MouseMotionListener {
 
-	private PiecePanel[] piecePanels; // Graphical components representing pieces
+	private Game game;
 	private ArrayList<DropTarget> dropTargets;
 
 	private PuzzlePanel puzzle;
@@ -60,34 +61,72 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 		this.add(this.puzzle, BorderLayout.CENTER);
 		this.add(this.containerEast, BorderLayout.EAST);
 
-		this.dropTargets = new ArrayList<DropTarget>(17);
-
-		for (int i = 0; i < 16; i++) {
-			CellPanel p = new CellPanel();
-			p.setBackground(new Color(i * 16 + 15, i * 16 + 15, i * 16 + 15));
-			this.puzzle.add(p, BorderLayout.WEST);
-			this.dropTargets.add(p);
-		}
-		this.dropTargets.add(stock);
-
-		this.piecePanels = new PiecePanel[16];
-		for (int i = 0; i < 7; i++) {
-			PiecePanel p = new PiecePanel(this);
-			p.setBackground(Color.BLACK);
-			this.stock.add(p, BorderLayout.WEST);
-			this.piecePanels[i] = p;
-		}
+		this.createGrid();
 
 		this.dragInfo = new DragInfo();
 		this.addMouseListener(this);
 		new KeyShortcuts(this);
 	}
 
-	public void createPiecePanels(Piece[] pieces) {
-		for (int i = 0; i < pieces.length; i++)
-		{
-			this.piecePanels[i].setPiece(pieces[i]);
+	public void createGrid() {
+		this.dropTargets = new ArrayList<DropTarget>(17);
+
+		for (int i = 0; i < 16; i++) {
+			CellPanel p = new CellPanel();
+			p.setBackground(new Color(i * 16 + 8, i * 16 + 8, i * 16 + 8));
+			this.puzzle.add(p, BorderLayout.WEST);
+			this.dropTargets.add(p);
 		}
+		this.dropTargets.add(stock); // Must add it after cell panels!
+	}
+
+	public void createPiecePanels(Piece[] pieces) {
+		int len = pieces.length;
+		for (int i = 0; i < 16; i++) {
+			PiecePanel p = new PiecePanel(this);
+			p.setBackground(Color.BLACK);
+			this.stock.add(p, BorderLayout.WEST);
+		}
+		this.stock.validate();
+		for (int i = 0; i < len; i++)
+		{
+			((PiecePanel)this.stock.getComponent(i)).setPiece(pieces[i]);
+		}
+	}
+
+	private ArrayList<PiecePanel> getOrderedPiecePanels() {
+		int len = 16;
+		ArrayList<PiecePanel> comps = new ArrayList<PiecePanel>(len);
+		for (int i = 0; i < len; i++)
+		{
+			CellPanel cellPanel = (CellPanel)this.dropTargets.get(i);
+			if (cellPanel.getComponentCount() > 0) {
+				comps.add((PiecePanel)cellPanel.getComponent(0));
+			}
+		}
+		return comps;
+	}
+
+	/**
+	 * If the grid is full, return the array of Piece, ordered left-right
+	 * then top-bottom.
+	 * Otherwise, return null.
+	 */
+	public Piece[] getOrderedPieces() { // TODO
+		ArrayList<PiecePanel> piecePanels = this.getOrderedPiecePanels();
+		int len = piecePanels.size();
+		if (len != 16) return null;
+
+		Piece[] pieces = new Piece[len];
+		for (int i = 0; i < len; i++) {
+			pieces[i] = piecePanels.get(i).getPiece();
+			System.out.println(pieces[i]);
+		}
+		return pieces;
+	}
+
+	public void setGame(Game game) {
+		this.game = game;
 	}
 
 	public DragInfo getDragInfo() {
@@ -162,17 +201,17 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 			if (!dest.acceptMultipleChilds() && dest.getComponentCount() != 0) {
 				DragTarget destContent = (DragTarget)dest.getComponent(0);
 				origin.add(destContent, 0);
-				origin.validate();
 				dest.remove(destContent);
 				dest.add(selection);
-				dest.validate();
 			} else { // Place the piece in the DropTarget
 				dest.add(selection, 0);
-				dest.validate();
 			}
+			origin.validate();
+			dest.validate();
 			this.remove(selection);
 			this.repaint();
 			//System.out.println("Unselection " + selection.getLocation() + " " + dest.getComponent(0));
+			this.game.checkSolution();
 		}
 	}
 

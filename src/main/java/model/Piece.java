@@ -37,4 +37,14 @@ public class Piece {
 		return orientation;
 	}
 
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("Piece(").append(id).append(",[");
+		for (Face face : this.faces) {
+			s.append(face).append(",");
+		}
+		s.append("],(").append(positionX).append(",").append(positionY)
+		.append("),").append(orientation);
+		return s.toString();
+	}
 }

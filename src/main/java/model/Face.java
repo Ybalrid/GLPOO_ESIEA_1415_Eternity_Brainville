@@ -31,5 +31,7 @@ public class Face {
 		return pattern;
 	}
 
-
+	public String toString() {
+		return "Face("+id+","+bgColor+","+fgColor+","+pattern+")";
+	}
 }
