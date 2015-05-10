@@ -20,9 +20,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import main.java.model.Face;
 import main.java.model.Piece;
-import main.java.model.PieceSynthetizer;
 import main.java.gui.interaction.DragInfo;
 import main.java.gui.interaction.DragTarget;
 import main.java.gui.interaction.DropTarget;
@@ -80,20 +78,12 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 			this.piecePanels[i] = p;
 		}
 
-		this.createPieces();
-
 		this.dragInfo = new DragInfo();
 		this.addMouseListener(this);
 		new KeyShortcuts(this);
 	}
 
-	private void createPieces() {
-
-		Face[] faces1 = {new Face(0, "blue", "purple", "zigzag"), new Face(0, "purple", "red", "circle"), new Face(0, "green", "blue", "triangle"), new Face(0, "red", "yellow", "")};
-		Face[] faces2 = {new Face(0, "", "", ""), new Face(0, "yellow", "red", ""), new Face(0, "yellow", "green", ""), new Face(0, "purple", "red", "")};
-		Face[] faces3 = {new Face(0, "purple", "red", "circle"), new Face(0, "blue", "purple", "zigzag"), new Face(0, "", "", ""), new Face(0, "", "", "")};
-		Piece[] pieces = {new Piece(0, faces1, 0, 0, 0), new Piece(0, faces2, 0, 0, 0), new Piece(0, faces1, 0, 0, 0), new Piece(0, faces3, 0, 0, 0), new Piece(0, faces2, 0, 0, 0)};
-
+	public void createPiecePanels(Piece[] pieces) {
 		for (int i = 0; i < pieces.length; i++)
 		{
 			this.piecePanels[i].setPiece(pieces[i]);
@@ -195,7 +185,7 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		System.out.print("[Dragged] ");// + e.getPoint() + " ");
+		//System.out.print("[Dragged] ");// + e.getPoint() + " ");
 
 		DragTarget selection = this.dragInfo.getSelection();
 		if (selection == e.getComponent()) {

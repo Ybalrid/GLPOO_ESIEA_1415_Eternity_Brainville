@@ -1,4 +1,4 @@
-package main.java.model;
+package main.java.controller;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -7,6 +7,9 @@ import java.awt.Shape;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Ellipse2D;
 import java.awt.BasicStroke;
+
+import main.java.model.Face;
+import main.java.model.Piece;
 
 /** Creates pieces by generating graphics given textual characteristics */
 /* TODO: support a scale factor ? */

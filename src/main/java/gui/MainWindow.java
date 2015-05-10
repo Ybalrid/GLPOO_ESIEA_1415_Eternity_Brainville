@@ -49,6 +49,10 @@ public class MainWindow extends JFrame implements ActionListener {
 		this.setJMenuBar(menuBar);
 	}
 
+	public GamePanel getGamePanel() {
+		return this.gamePanel;
+	}
+
 	/*
 	* Events response implementations
 	*/

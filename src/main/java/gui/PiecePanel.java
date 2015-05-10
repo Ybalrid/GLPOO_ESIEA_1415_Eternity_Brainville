@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 
 import main.java.model.Piece;
-import main.java.model.PieceSynthetizer;
+import main.java.controller.PieceSynthetizer;
 import main.java.gui.interaction.DragTarget;
 
 public class PiecePanel extends DragTarget {
