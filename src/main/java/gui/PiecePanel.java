@@ -18,13 +18,10 @@ public class PiecePanel extends DragTarget {
 	private Piece piece;
 	private BufferedImage img;
 	private double rotation; // Angle in radians
-	private GamePanel container;
 
-	public PiecePanel(GamePanel container) {
-		this.addMouseListener(container);
-		this.addMouseMotionListener(container);
-		this.container = container;
-		this.setPreferredSize(new Dimension(100,100));
+
+	public PiecePanel() {
+		this.setPreferredSize(new Dimension(100, 100));
 	}
 
 	@Override
