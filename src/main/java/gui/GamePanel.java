@@ -159,25 +159,28 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		Point globalPos = SwingUtilities.convertPoint(e.getComponent(), e.getPoint(), this);
-		System.out.print("[Pressed] (" + globalPos.x + "," + globalPos.y + ") ");
-
-		this.dragInfo.reset();
-
-		Component pointed = this.findComponentAt(globalPos);
-
-		if (pointed instanceof DragTarget && this.dragInfo.getSelection() == null) {
-			DragTarget selection = (DragTarget)pointed;
-			DropTarget target = (DropTarget)selection.getParent();
-			this.dragInfo.setSelection(selection);
-			this.dragInfo.setOrigin(target);
-			selection.setLocation(globalPos.x - selection.getWidth()/2, globalPos.y - selection.getHeight()/2);
-			target.remove(selection);
-			target.repaint();
-			this.add(selection, 0);
-			this.repaint();
-			selection.requestFocusInWindow();
-			System.out.println("Selection: " + selection + " ");
+		if(e.getButton() == MouseEvent.BUTTON1)
+		{
+			Point globalPos = SwingUtilities.convertPoint(e.getComponent(), e.getPoint(), this);
+			System.out.print("[Pressed] (" + globalPos.x + "," + globalPos.y + ") ");
+	
+			this.dragInfo.reset();
+	
+			Component pointed = this.findComponentAt(globalPos);
+	
+			if (pointed instanceof DragTarget && this.dragInfo.getSelection() == null) {
+				DragTarget selection = (DragTarget)pointed;
+				DropTarget target = (DropTarget)selection.getParent();
+				this.dragInfo.setSelection(selection);
+				this.dragInfo.setOrigin(target);
+				selection.setLocation(globalPos.x - selection.getWidth()/2, globalPos.y - selection.getHeight()/2);
+				target.remove(selection);
+				target.repaint();
+				this.add(selection, 0);
+				this.repaint();
+				selection.requestFocusInWindow();
+				System.out.println("Selection: " + selection + " ");
+			}
 		}
 	}
 
@@ -227,16 +230,15 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 	}
 
 	@Override
-	public void mouseDragged(MouseEvent e) {
+	public void mouseDragged(MouseEvent e) {	
 		System.out.print("[Dragged] ");// + e.getPoint() + " ");
-
+	
 		DragTarget selection = this.dragInfo.getSelection();
 		if (selection != null) {
 			Point globalPos = e.getPoint();
 			System.out.println("Drag selection: " + selection.getLocation() + " " + globalPos);
 			selection.setLocation(globalPos.x - selection.getWidth()/2, globalPos.y - selection.getHeight()/2);
+
 		}
-
 	}
-
 }
