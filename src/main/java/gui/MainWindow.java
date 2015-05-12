@@ -39,33 +39,30 @@ public class MainWindow extends JFrame implements ActionListener {
 
 	private void constructMenu()
 	{
+		//Create menu bar
 		menuBar = new JMenuBar();
+		
+		//Create menu "Partie"
 		menuPartie = new JMenu("Partie");
-
 
 		itemNouvelle = new JMenuItem("Nouvelle partie");
 		itemNouvelle.addActionListener(this);
-
 		menuPartie.add(itemNouvelle);
 		
 		itemSauver = new JMenuItem("Sauvegarder la partie");
 		itemSauver.addActionListener(this);
-
 		menuPartie.add(itemSauver);
 
 		itemCharger = new JMenuItem("Charger la partie");
 		itemCharger.addActionListener(this);
-
 		menuPartie.add(itemCharger);
 		
 
 		itemQuitter = new JMenuItem("Quitter");
 		itemQuitter.addActionListener(this);
-
 		menuPartie.add(itemQuitter);
 		
 		menuBar.add(menuPartie);
-
 		this.setJMenuBar(menuBar);
 	}
 
@@ -81,5 +78,19 @@ public class MainWindow extends JFrame implements ActionListener {
 	{
 		if(e.getSource() == (Object)itemQuitter)
 			this.dispose();
+		if(e.getSource() == (Object)itemNouvelle)
+		{
+			//create new game
+		}
+		
+		if(e.getSource() == (Object)itemSauver)
+		{
+			//If save file location unknown, open a dialog for selecting a save file,
+			//Save the game at the save file location
+		}
+		if(e.getSource() == (Object)itemCharger)
+		{
+			//Open a dialog for selecting a save file and load it
+		}
 	}
 }
