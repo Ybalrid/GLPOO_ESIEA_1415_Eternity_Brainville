@@ -20,4 +20,4 @@ Installation
 - Importer le projet dans eclipse
 - dans eclipse, faire *Project > Properties > Java Build Path > Sources*, retirer ce qu'eclipse a créé automatiquement, rajouter le dossier /src du projet uniquement.
 
-Ce dépot est configuré automatiquement avec maven, tourne sur java 8 et effectue des test unitaires avec jUnit 4.12 (dernière versio disponible à l'écriture du pom.xml)
+Ce dépot est configuré automatiquement avec maven, tourne sur java 8 et effectue des test unitaires avec jUnit 4.12, OpenCSV est aussi inclu en dépendances. 
