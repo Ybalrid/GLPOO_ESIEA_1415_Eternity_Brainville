@@ -164,13 +164,18 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 		
 		Point globalPos = SwingUtilities.convertPoint(e.getComponent(), e.getPoint(), this);
 		System.out.print("[Pressed] " + e.getButton() + " (" + globalPos.x + "," + globalPos.y + ") ");
+		Component pointed = this.findComponentAt(globalPos);
 
 		if (e.getButton() == MouseEvent.BUTTON3) {
-			this.rotateSelection(true);
+			//Get what is under the cursor
+			//If it's a DragTarget
+			if (pointed instanceof DragTarget) {
+				//Rotate it
+				((PiecePanel)pointed).rotate(true);
+			}
+			
 		} else if(e.getButton() == MouseEvent.BUTTON1) {
 			this.dragInfo.reset();
-			Component pointed = this.findComponentAt(globalPos);
-
 			if (pointed instanceof DragTarget && this.dragInfo.getSelection() == null) {
 				DragTarget selection = (DragTarget)pointed;
 				DropTarget target = (DropTarget)selection.getParent();
@@ -229,30 +234,16 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 	@Override
 	public void mouseMoved(MouseEvent e) {		
 		//If no buttont are pressed : 
-		if(e.getButton() == MouseEvent.NOBUTTON){
-			//Get the position of the mouse
-			Point globalPos = e.getPoint();
-			//Get what is under the cursor
-			Component pointed = this.findComponentAt(globalPos);
-			//If it's a DragTarget
-			if (pointed instanceof DragTarget) {
-				//Select it
-				this.dragInfo.setSelection((DragTarget) pointed);
-			
-			}
-		}
 	}
 
 	@Override
-	public void mouseDragged(MouseEvent e) {	
+	public void mouseDragged(MouseEvent e) {
 		//System.out.print("[Dragged] ");// + e.getPoint() + " ");
-
 		DragTarget selection = this.dragInfo.getSelection();
-		if (selection != null) {
+		if (selection != null && e.getButton() != MouseEvent.BUTTON3) {
 			Point globalPos = e.getPoint();
 			System.out.println("Drag selection: " + selection.getLocation() + " " + globalPos);
 			selection.setLocation(globalPos.x - selection.getWidth()/2, globalPos.y - selection.getHeight()/2);
-
 		}
 	}
 }
