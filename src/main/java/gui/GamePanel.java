@@ -227,18 +227,16 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 	/* MouseMotionEvent */
 
 	@Override
-	public void mouseMoved(MouseEvent e) {
-//		System.out.print("[Moved] " + e.getX() + " " + e.getY() + " ");
-		
-		//If not dragging a peice, change the selection.
-		//This will permit to rotate a piece while hovering it
-		
+	public void mouseMoved(MouseEvent e) {		
 		//If no buttont are pressed : 
 		if(e.getButton() == MouseEvent.NOBUTTON){
-			System.out.println("moved without button at " + getX() + " " + e.getY());
+			//Get the position of the mouse
 			Point globalPos = e.getPoint();
+			//Get what is under the cursor
 			Component pointed = this.findComponentAt(globalPos);
+			//If it's a DragTarget
 			if (pointed instanceof DragTarget) {
+				//Select it
 				this.dragInfo.setSelection((DragTarget) pointed);
 			
 			}
