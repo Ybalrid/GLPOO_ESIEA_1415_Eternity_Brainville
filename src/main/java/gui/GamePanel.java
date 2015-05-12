@@ -232,6 +232,17 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 		
 		//If not dragging a peice, change the selection.
 		//This will permit to rotate a piece while hovering it
+		
+		//If no buttont are pressed : 
+		if(e.getButton() == MouseEvent.NOBUTTON){
+			System.out.println("moved without button at " + getX() + " " + e.getY());
+			Point globalPos = e.getPoint();
+			Component pointed = this.findComponentAt(globalPos);
+			if (pointed instanceof DragTarget) {
+				this.dragInfo.setSelection((DragTarget) pointed);
+			
+			}
+		}
 	}
 
 	@Override
