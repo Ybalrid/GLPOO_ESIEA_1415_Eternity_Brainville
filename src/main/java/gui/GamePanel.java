@@ -229,6 +229,9 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 	@Override
 	public void mouseMoved(MouseEvent e) {
 //		System.out.print("[Moved] " + e.getX() + " " + e.getY() + " ");
+		
+		//If not dragging a peice, change the selection.
+		//This will permit to rotate a piece while hovering it
 	}
 
 	@Override
