@@ -17,6 +17,9 @@ public class MainWindow extends JFrame implements ActionListener {
 	private JMenuBar menuBar;
 	private JMenu menuPartie;
 	private JMenuItem itemQuitter;
+	private JMenuItem itemSauver;
+	private JMenuItem itemCharger;
+	private JMenuItem itemNouvelle;
 
 	public MainWindow()
 	{
@@ -39,11 +42,28 @@ public class MainWindow extends JFrame implements ActionListener {
 		menuBar = new JMenuBar();
 		menuPartie = new JMenu("Partie");
 
+
+		itemNouvelle = new JMenuItem("Nouvelle partie");
+		itemNouvelle.addActionListener(this);
+
+		menuPartie.add(itemNouvelle);
+		
+		itemSauver = new JMenuItem("Sauvegarder la partie");
+		itemSauver.addActionListener(this);
+
+		menuPartie.add(itemSauver);
+
+		itemCharger = new JMenuItem("Charger la partie");
+		itemCharger.addActionListener(this);
+
+		menuPartie.add(itemCharger);
+		
+
 		itemQuitter = new JMenuItem("Quitter");
 		itemQuitter.addActionListener(this);
 
 		menuPartie.add(itemQuitter);
-
+		
 		menuBar.add(menuPartie);
 
 		this.setJMenuBar(menuBar);
@@ -59,6 +79,7 @@ public class MainWindow extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e)
 	{
-		this.dispose();
+		if(e.getSource() == (Object)itemQuitter)
+			this.dispose();
 	}
 }
