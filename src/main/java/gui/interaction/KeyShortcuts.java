@@ -9,7 +9,6 @@ import javax.swing.ActionMap;
 import javax.swing.KeyStroke;
 
 import main.java.gui.GamePanel;
-import main.java.gui.interaction.DragTarget;
 
 public class KeyShortcuts {
 
