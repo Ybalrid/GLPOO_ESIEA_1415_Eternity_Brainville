@@ -37,9 +37,6 @@ public class PieceSynthetizer {
 			graphics.setColor(translateColor(faces[orientation].getFgColor()));
 			graphics.fill(translatePattern(faces[orientation].getPattern()));
 
-			graphics.setColor(Color.BLACK);
-			graphics.draw(translatePattern(faces[orientation].getPattern()));
-
 			graphics.rotate(-orientation * Math.PI / 2, 50, 50);
 		}
 

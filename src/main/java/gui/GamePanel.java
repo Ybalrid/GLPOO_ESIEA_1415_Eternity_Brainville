@@ -161,19 +161,18 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		
+
 		Point globalPos = SwingUtilities.convertPoint(e.getComponent(), e.getPoint(), this);
 		System.out.print("[Pressed] " + e.getButton() + " (" + globalPos.x + "," + globalPos.y + ") ");
+		// Get what is under the cursor
 		Component pointed = this.findComponentAt(globalPos);
 
 		if (e.getButton() == MouseEvent.BUTTON3) {
-			//Get what is under the cursor
-			//If it's a DragTarget
+			// If it's a DragTarget, rotate it
 			if (pointed instanceof DragTarget) {
-				//Rotate it
 				((PiecePanel)pointed).rotate(true);
 			}
-			
+
 		} else if(e.getButton() == MouseEvent.BUTTON1) {
 			this.dragInfo.reset();
 			if (pointed instanceof DragTarget && this.dragInfo.getSelection() == null) {
@@ -199,7 +198,7 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 		DropTarget origin = this.dragInfo.getOrigin();
 		DragTarget selection = this.dragInfo.getSelection();
 
-		if (e.getButton() != 3 && selection != null) {
+		if (e.getButton() != MouseEvent.BUTTON3 && selection != null) {
 			Point p = e.getPoint();
 			DropTarget dest = origin;
 
@@ -232,8 +231,8 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 	/* MouseMotionEvent */
 
 	@Override
-	public void mouseMoved(MouseEvent e) {		
-		//If no buttont are pressed : 
+	public void mouseMoved(MouseEvent e) {
+		//If no buttont are pressed :
 	}
 
 	@Override

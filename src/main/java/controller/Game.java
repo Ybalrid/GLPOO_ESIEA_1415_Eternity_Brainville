@@ -2,9 +2,9 @@ package main.java.controller;
 
 import main.java.gui.GamePanel;
 import main.java.model.Face;
-import main.java.model.ModelManager;
 import main.java.model.Piece;
 import main.java.model.Solution;
+import main.java.model.ModelManager;
 
 public class Game {
 
@@ -21,7 +21,7 @@ public class Game {
 	}
 
 	private void loadLevel() {
-
+		/*
 		Face f0 = new Face(0, "", "", "");
 		Face f1 = new Face(1, "blue", "white", "zigzag");
 		Face f2 = new Face(2, "purple", "red", "circle");
@@ -45,13 +45,19 @@ public class Game {
 		Piece p15 = new Piece(15, new Face[]{f2, f0, f0, f4}, 3, 3, 0);
 
 		Piece[] pieces = {p15, p14, p13, p12, p11, p10, p9, p8, p7, p6, p5, p4, p3, p2, p1, p0};
-
+		*/
 		this.modelManager.loadFaces();
 		this.modelManager.loadPieces();
-		this.gamePanel.createPiecePanels(this.modelManager.getPieces());
+		Piece[] pieces = this.modelManager.getPieces();
+
+		this.solution = new Solution(pieces);
+		this.gamePanel.createPiecePanels(pieces);
 	}
 
 	public void checkSolution() {
-		this.gamePanel.getOrderedPieces();
+		Piece[] pieces = this.gamePanel.getOrderedPieces();
+		/*for (int i = 0; i < this.solution.size; i++) {
+			if (pieces[i] == this.solution.get(i))
+		}*/
 	}
 }
