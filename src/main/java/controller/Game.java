@@ -2,6 +2,7 @@ package main.java.controller;
 
 import main.java.gui.GamePanel;
 import main.java.model.Face;
+import main.java.model.ModelManager;
 import main.java.model.Piece;
 import main.java.model.Solution;
 
@@ -9,10 +10,12 @@ public class Game {
 
 	private GamePanel gamePanel;
 	private Solution solution; // Order of pieces: left-right, then top-bottom
+	private ModelManager modelManager;
 
 	public Game(GamePanel gamePanel) {
 		this.gamePanel = gamePanel;
 		gamePanel.setGame(this);
+		this.modelManager = new ModelManager(this);
 
 		this.loadLevel();
 	}
@@ -43,7 +46,9 @@ public class Game {
 
 		Piece[] pieces = {p15, p14, p13, p12, p11, p10, p9, p8, p7, p6, p5, p4, p3, p2, p1, p0};
 
-		this.gamePanel.createPiecePanels(pieces);
+		this.modelManager.loadFaces();
+		this.modelManager.loadPieces();
+		this.gamePanel.createPiecePanels(this.modelManager.getPieces());
 	}
 
 	public void checkSolution() {
