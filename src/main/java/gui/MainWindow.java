@@ -123,6 +123,7 @@ public class MainWindow extends JFrame implements ActionListener {
 			{
 				saveDao = new SaveDAO(fc.getSelectedFile(), gamePanel.getGame().getModelManager());
 				saveDao.save();
+				saveDao = null;
 			}
 			
 		}
@@ -134,6 +135,7 @@ public class MainWindow extends JFrame implements ActionListener {
 			{
 				saveDao = new SaveDAO(fc.getSelectedFile(), gamePanel.getGame().getModelManager());
 				saveDao.load();
+				saveDao = null;
 			}
 			
 		}
