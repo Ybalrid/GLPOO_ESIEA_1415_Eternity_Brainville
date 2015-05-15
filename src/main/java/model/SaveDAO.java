@@ -4,6 +4,8 @@ import java.awt.List;
 import java.io.File;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import main.java.controller.Game;
 
 public class SaveDAO extends CsvDAO {
@@ -33,6 +35,15 @@ public class SaveDAO extends CsvDAO {
 		Game game =  modelManager.getGame();
 		
 		Piece[] pieces = game.getGamePanel().getOrderedPieces();
+		//System.out.println( pieces.length);
+		
+		if(pieces == null)
+		{
+			JOptionPane.showMessageDialog(game.getGamePanel(),
+					"Veuillez placer toutes les pièces sur le tableau de jeu pour sauvegarder...", "Error", 0);
+			return;
+		}
+		
 		ArrayList<String[]> gameContent = new ArrayList<String[]>();
 
 		int debug = 0;
@@ -59,6 +70,7 @@ public class SaveDAO extends CsvDAO {
 			gameContent.add(pieceDesc);
 		}
 		this.writeLineFromArray(gameContent);
+		System.out.println("Saved!");
 	}
 
 }
