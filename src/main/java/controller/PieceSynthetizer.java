@@ -22,23 +22,21 @@ public class PieceSynthetizer {
 		Face[] faces = piece.getFaces();
 		BufferedImage img = new BufferedImage(100, 100, BufferedImage.TYPE_INT_RGB);
 		Graphics2D graphics = img.createGraphics();
-		int[][] xBgPoints = {{0, 100, 50}, {100, 100, 50}, {0, 100, 50}, {0, 0, 50}};
-		int[][] yBgPoints = {{0, 0, 50}, {0, 100, 50}, {100, 100, 50}, {0, 100, 50}};
+		int[] xBgPoints = {0, 100, 50};
+		int[] yBgPoints = {0, 0, 50};
 
 		//graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING,				RenderingHints.VALUE_ANTIALIAS_ON);
 		graphics.setStroke(new BasicStroke(0));
 
 		for (int orientation = 0; orientation < 4; orientation++)
 		{
+			graphics.rotate(Math.PI / 2, 50, 50);
+		
 			graphics.setColor(translateColor(faces[orientation].getBgColor()));
-			graphics.fillPolygon(xBgPoints[orientation], yBgPoints[orientation], 3);
-
-			graphics.rotate(orientation * Math.PI / 2, 50, 50);
+			graphics.fillPolygon(xBgPoints, yBgPoints, 3);
 
 			graphics.setColor(translateColor(faces[orientation].getFgColor()));
 			graphics.fill(translatePattern(faces[orientation].getPattern()));
-
-			graphics.rotate(-orientation * Math.PI / 2, 50, 50);
 		}
 
 		graphics.setColor(Color.BLACK);
