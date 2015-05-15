@@ -12,5 +12,15 @@ public class SaveDAO extends CsvDAO {
 		modelManager = mm;
 		System.out.println("Save file DAO created");
 	}
+	
+	public void load()
+	{
+		
+	}
+	
+	public void save()
+	{
+		
+	}
 
 }

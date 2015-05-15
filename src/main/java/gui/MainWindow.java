@@ -126,6 +126,7 @@ public class MainWindow extends JFrame implements ActionListener {
 			{
 				System.out.println("apparently a valid file has been selected...");
 				saveDao = new SaveDAO(fc.getSelectedFile(), gamePanel.getGame().getModelManager());
+				saveDao.save();
 			}
 			
 		}
@@ -135,6 +136,13 @@ public class MainWindow extends JFrame implements ActionListener {
 			fc.showOpenDialog(this);
 			System.out.println("debug showOpenDialog");
 			System.out.println("Information from the file : " + fc.getSelectedFile());
+			if(fc.getSelectedFile() != null)
+			{
+				System.out.println("apparently a valid file has been selected...");
+				saveDao = new SaveDAO(fc.getSelectedFile(), gamePanel.getGame().getModelManager());
+				saveDao.load();
+			}
+			
 		}
 	}
 }
