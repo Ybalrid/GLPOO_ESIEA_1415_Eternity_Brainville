@@ -25,12 +25,16 @@ public abstract class CsvDAO {
 	}
 	
 	protected List<String[]> getLinesFromFile() {
+		return getLinesFromFile(2);
+	}
+
+	protected List<String[]> getLinesFromFile(int startLine) {
 
 		CSVReader csvReader;
 		List<String[]> lines = null;
 		
 		try {
-			csvReader = new CSVReader(new FileReader(file), SEPARATOR, '"', 2);
+			csvReader = new CSVReader(new FileReader(file), SEPARATOR, '"', startLine);
 			lines = csvReader.readAll();
 			csvReader.close();
 		} catch (FileNotFoundException e) { e.printStackTrace();
@@ -51,8 +55,5 @@ public abstract class CsvDAO {
 			
 		} catch (FileNotFoundException e) { e.printStackTrace();
 		} catch (IOException e) { e.printStackTrace(); }	
-		
-		
-		
 	}
 }
