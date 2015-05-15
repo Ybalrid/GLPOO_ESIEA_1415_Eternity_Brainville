@@ -15,12 +15,12 @@ public class SaveDAO extends CsvDAO {
 	
 	public void load()
 	{
-		
+		System.out.println("Loading");
 	}
 	
 	public void save()
 	{
-		
+		System.out.println("Saving");
 	}
 
 }

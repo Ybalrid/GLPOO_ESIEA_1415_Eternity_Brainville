@@ -3,10 +3,12 @@ package main.java.model;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
 import au.com.bytecode.opencsv.CSVReader;
+import au.com.bytecode.opencsv.CSVWriter;
 
 public abstract class CsvDAO {
 	
@@ -35,5 +37,22 @@ public abstract class CsvDAO {
 		} catch (IOException e) { e.printStackTrace(); }
 		
 		return lines;
+	}
+	
+	protected void writeLineFromArray(List<String[]> array)
+	{
+		CSVWriter csvWriter;
+		
+		try
+		{
+			csvWriter = new CSVWriter(new FileWriter(file), SEPARATOR, '"');
+			csvWriter.writeAll(array);
+			csvWriter.close();
+			
+		} catch (FileNotFoundException e) { e.printStackTrace();
+		} catch (IOException e) { e.printStackTrace(); }	
+		
+		
+		
 	}
 }
