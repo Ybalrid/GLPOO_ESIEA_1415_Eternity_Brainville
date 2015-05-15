@@ -6,6 +6,6 @@ import main.java.gui.MainWindow;
 public class Eternity {
 
 	public static void main(String[] args) {
-		new Game(new MainWindow().getGamePanel());
+		new Game(new MainWindow());
 	}
 }
