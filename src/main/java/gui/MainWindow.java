@@ -49,6 +49,8 @@ public class MainWindow extends JFrame implements ActionListener {
 		itemNouvelle.addActionListener(this);
 		menuPartie.add(itemNouvelle);
 		
+		menuPartie.addSeparator();
+		
 		itemSauver = new JMenuItem("Sauvegarder la partie");
 		itemSauver.addActionListener(this);
 		menuPartie.add(itemSauver);
@@ -57,6 +59,7 @@ public class MainWindow extends JFrame implements ActionListener {
 		itemCharger.addActionListener(this);
 		menuPartie.add(itemCharger);
 		
+		menuPartie.addSeparator();
 
 		itemQuitter = new JMenuItem("Quitter");
 		itemQuitter.addActionListener(this);
