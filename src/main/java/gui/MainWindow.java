@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -20,7 +21,8 @@ public class MainWindow extends JFrame implements ActionListener {
 	private JMenuItem itemSauver;
 	private JMenuItem itemCharger;
 	private JMenuItem itemNouvelle;
-
+	private JFileChooser fc;
+	
 	public MainWindow()
 	{
 		super("Eternity");
@@ -67,6 +69,9 @@ public class MainWindow extends JFrame implements ActionListener {
 		
 		menuBar.add(menuPartie);
 		this.setJMenuBar(menuBar);
+		
+		fc = new JFileChooser();
+		//fc.addActionListener(this);
 	}
 
 	public GamePanel getGamePanel() {
@@ -76,11 +81,11 @@ public class MainWindow extends JFrame implements ActionListener {
 	/*
 	* Events response implementations
 	*/
-
 	public void actionPerformed(ActionEvent e)
 	{
 		if(e.getSource() == (Object)itemQuitter)
 			this.dispose();
+		
 		if(e.getSource() == (Object)itemNouvelle)
 		{
 			//create new game
@@ -90,10 +95,16 @@ public class MainWindow extends JFrame implements ActionListener {
 		{
 			//If save file location unknown, open a dialog for selecting a save file,
 			//Save the game at the save file location
+			fc.showSaveDialog(this);
+			System.out.println("debug showOpenDialog");
+			System.out.println("Information from the file : " + fc.getSelectedFile());
 		}
+		
 		if(e.getSource() == (Object)itemCharger)
 		{
-			//Open a dialog for selecting a save file and load it
+			fc.showOpenDialog(this);
+			System.out.println("debug showOpenDialog");
+			System.out.println("Information from the file : " + fc.getSelectedFile());
 		}
 	}
 }

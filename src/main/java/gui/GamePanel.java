@@ -156,6 +156,11 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 	public void setGame(Game game) {
 		this.game = game;
 	}
+	
+	public Game getGame()
+	{
+		return game;
+	}
 
 	public DragInfo getDragInfo() {
 		return this.dragInfo;
