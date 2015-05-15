@@ -17,6 +17,11 @@ public abstract class CsvDAO {
 		this.file = new File(filename);
 	}
 	
+	public CsvDAO(File fileObject)
+	{
+		this.file = fileObject;
+	}
+	
 	protected List<String[]> getLinesFromFile() {
 
 		CSVReader csvReader;

@@ -10,7 +10,7 @@ public class PieceDAO extends CsvDAO {
 		super ("res/pieces-" + id + ".csv");
 		this.modelManager = modelManager;
 	}
-	
+		
    public Piece[] getPieces() {
 	   List<String[]> lines = this.getLinesFromFile();
 	   Piece[] pieces = new Piece[lines.size()];

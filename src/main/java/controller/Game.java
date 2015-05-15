@@ -67,6 +67,11 @@ public class Game {
 		
 		this.currentLevel = levelId;
 	}
+	
+	public ModelManager getModelManager() 
+	{
+		return this.modelManager;
+	}
 
 	public void checkSolution() {
 		Piece[] pieces = this.gamePanel.getOrderedPieces();

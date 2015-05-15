@@ -149,7 +149,7 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 		Piece[] pieces = new Piece[len];
 		for (int i = 0; i < len; i++) {
 			pieces[i] = piecePanels.get(i).getPiece();
-			//System.out.println(pieces[i]);
+			////System.out.println(pieces[i]);
 		}
 		return pieces;
 	}
@@ -174,17 +174,17 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-//		System.out.println("[Clicked] Point: " + e.getX() + ", " + e.getY() + " ");
+//		//System.out.println("[Clicked] Point: " + e.getX() + ", " + e.getY() + " ");
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-//		System.out.println("[Entered] Point: " + e.getX() + ", " + e.getY() + " ");
+//		//System.out.println("[Entered] Point: " + e.getX() + ", " + e.getY() + " ");
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-//		System.out.print("[Exited] ");// Point: " + e.getX() + ", " + e.getY() + " ");
+//		//System.out.print("[Exited] ");// Point: " + e.getX() + ", " + e.getY() + " ");
 	}
 	
 
@@ -192,7 +192,7 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 	public void mousePressed(MouseEvent e) {
 
 		Point globalPos = SwingUtilities.convertPoint(e.getComponent(), e.getPoint(), this);
-		System.out.print("[Pressed] " + e.getButton() + " (" + globalPos.x + "," + globalPos.y + ") ");
+		//System.out.print("[Pressed] " + e.getButton() + " (" + globalPos.x + "," + globalPos.y + ") ");
 		// Get what is under the cursor
 		Component pointed = this.findComponentAt(globalPos);
 
@@ -214,7 +214,7 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 				target.repaint();
 				this.add(selection, 0);
 				this.repaint();
-				System.out.println("Selection: " + selection + " ");
+				//System.out.println("Selection: " + selection + " ");
 				canDrag = true;
 			}
 		}
@@ -225,7 +225,7 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 		if(e.getButton() == MouseEvent.BUTTON1)
 			canDrag = false;
 		Point globalPos = e.getPoint();
-		System.out.println("[Released] " + e.getButton() + " (" + globalPos.x + "," + globalPos.y + ") ");
+		//System.out.println("[Released] " + e.getButton() + " (" + globalPos.x + "," + globalPos.y + ") ");
 
 		DropTarget origin = this.dragInfo.getOrigin();
 		DragTarget selection = this.dragInfo.getSelection();
@@ -240,7 +240,7 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 					dest = target;
 				}
 			}
-			//System.out.println("Destination: " + dest);
+			////System.out.println("Destination: " + dest);
 
 			// Swap the two pieces if drag into already occupied DropTarget
 			if (!dest.acceptMultipleChilds() && dest.getComponentCount() != 0) {
@@ -255,7 +255,7 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 			dest.validate();
 			this.remove(selection);
 			this.repaint();
-			//System.out.println("Unselection " + selection.getLocation() + " " + dest.getComponent(0));
+			////System.out.println("Unselection " + selection.getLocation() + " " + dest.getComponent(0));
 		}
 		this.game.checkSolution();
 	}
@@ -272,7 +272,7 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 		DragTarget selection = this.dragInfo.getSelection();
 		if (canDrag && selection != null && e.getButton() != MouseEvent.BUTTON3) {
 			Point globalPos = e.getPoint();
-			System.out.println("Drag selection: " + selection.getLocation() + " " + globalPos);
+			//System.out.println("Drag selection: " + selection.getLocation() + " " + globalPos);
 			selection.setLocation(globalPos.x - selection.getWidth()/2, globalPos.y - selection.getHeight()/2);
 		}
 	}

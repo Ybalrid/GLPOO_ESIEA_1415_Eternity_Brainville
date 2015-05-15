@@ -11,6 +11,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import main.java.controller.Game;
+import main.java.model.SaveDAO;
 
 public class MainWindow extends JFrame implements ActionListener {
 
@@ -24,6 +25,8 @@ public class MainWindow extends JFrame implements ActionListener {
 	private JMenuItem itemCharger;
 	private JMenuItem itemNouvelle;
 	private JFileChooser fc;
+	
+	private SaveDAO saveDao;
 	
 	public MainWindow(Game game)
 	{
@@ -118,6 +121,13 @@ public class MainWindow extends JFrame implements ActionListener {
 			fc.showSaveDialog(this);
 			System.out.println("debug showOpenDialog");
 			System.out.println("Information from the file : " + fc.getSelectedFile());
+			
+			if(fc.getSelectedFile() != null)
+			{
+				System.out.println("apparently a valid file has been selected...");
+				saveDao = new SaveDAO(fc.getSelectedFile(), gamePanel.getGame().getModelManager());
+			}
+			
 		}
 		
 		if(e.getSource() == (Object)itemCharger)
