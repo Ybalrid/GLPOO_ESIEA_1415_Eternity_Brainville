@@ -112,8 +112,7 @@ public class MainWindow extends JFrame implements ActionListener {
 		if(e.getSource() == (Object)itemNouvelle)
 		{
 			//create new game
-			this.gamePanel.getGame().restart();
-		}
+			this.gamePanel.getGame().startHome();		}
 		
 		if(e.getSource() == (Object)itemSauver)
 		{

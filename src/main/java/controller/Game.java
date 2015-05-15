@@ -45,11 +45,6 @@ public class Game {
 		return this.levelCount;
 	}
 	
-	public void restart()
-	{
-		startHome();
-	}
-
 	public void startGame() {
 		this.currentLevel = 0;
 		this.window.loadGamePanel();
