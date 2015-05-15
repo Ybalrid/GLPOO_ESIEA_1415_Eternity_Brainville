@@ -11,6 +11,7 @@ import main.java.model.Piece;
 import main.java.model.Solution;
 import main.java.model.ModelManager;
 
+/* Manages the gameplay. Main controller of the project. */
 public class Game {
 
 	private MainWindow window;
@@ -51,37 +52,49 @@ public class Game {
 	}	
 
 	public void loadLevel(int levelId) {
+		// Destroy level
 		this.gamePanel.destroyPiecePanels();
 		this.gamePanel.destroyGrid();
 		
+		// Load solution
 		this.modelManager.loadFaces(levelId);
 		this.modelManager.loadPieces(levelId);
 		
+		// Get solution, and deduce playable pieces
 		Piece[] pieces = this.modelManager.getPieces(), piecesCopy = new Piece[pieces.length];
-		// Array copy
-		for (int i = 0; i < pieces.length; i++) piecesCopy[i] = pieces[i].copy();
+		for (int i = 0; i < pieces.length; i++)
+			piecesCopy[i] = pieces[i].copy(); // Array copy
 
+		// Create level
 		this.solution = new Solution(pieces);
 		this.gamePanel.createGrid(piecesCopy.length);
 		this.gamePanel.createPiecePanels(piecesCopy);
 		
+		// Set current level id
 		this.currentLevel = levelId;
 	}
 
+	/* Checks whether level has been solved.
+	 * If so, transition to next one.
+	 * If there is no level left, go to home screen */
 	public void checkSolution() {
 		Piece[] pieces = this.gamePanel.getOrderedPieces();
 		if (pieces == null) return;
 		int i;
 		
+		// Checking by identification
 		for (i = 0; i < this.solution.getSize(); i++) {
 			//System.out.println("Piece equality: " + pieces[i] + " " + this.solution.get(i) + " " + !pieces[i].equals(this.solution.get(i)));
 			if (!pieces[i].equals(this.solution.get(i)))
 				break;
 		}
-		System.out.println("");
+		//System.out.println("");
+		
+		// If solved, go to next
 		if (i == this.solution.getSize()) {
 			System.out.println("\n*** You just won the game ***\n");
 			
+			// Deferred call to next level
 			TIMER.schedule(new TimerTask() {
 				@Override public void run() {
 					if (currentLevel == levelCount) {
