@@ -42,7 +42,7 @@ public class ModelManager {
 		};
 		return null;
 	}
-
+	
 	public void setPieces(Piece[] pieces) {
 		this.pieces = pieces;
 	}
@@ -53,6 +53,11 @@ public class ModelManager {
 	
 	public void loadPieces(int id) {
 		this.setPieces(new PieceDAO(String.format("%02d", id), this).getPieces());
+	}
+	
+	public Game getGame()
+	{
+		return game;
 	}
 	
 }

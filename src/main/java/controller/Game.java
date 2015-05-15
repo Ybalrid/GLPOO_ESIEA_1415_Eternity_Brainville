@@ -37,6 +37,10 @@ public class Game {
 		//this.loadLevel(1);
 	}
 	
+	public GamePanel getGamePanel(){
+		return this.gamePanel;
+	}
+	
 	public int getLevelCount() {
 		return this.levelCount;
 	}
