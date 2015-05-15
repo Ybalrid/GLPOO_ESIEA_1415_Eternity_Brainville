@@ -40,8 +40,8 @@ public class HomePanel extends JPanel implements ActionListener {
 		
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setBackground(new Color(250, 210, 220));
-		levelButtons = new JButton[3];
-		for (int i = 0; i < 3; i++) {
+		levelButtons = new JButton[4];
+		for (int i = 0; i < levelButtons.length; i++) {
 			JButton lvlButton = new JButton("Level " + (i+1));
 			levelButtons[i] = lvlButton;
 			buttonPanel.add(lvlButton);
