@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+import javax.swing.BoxLayout;
 
 import main.java.controller.Game;
 
@@ -44,14 +45,29 @@ public class HomePanel extends JPanel implements ActionListener {
 		levelButtons = new JButton[this.game.getLevelCount()];
 		for (int i = 0; i < levelButtons.length; i++) {
 			JButton lvlButton = new JButton("Level " + (i+1));
+			lvlButton.setBackground(new Color(160, 40, 60));
+			lvlButton.setForeground(Color.WHITE);
 			levelButtons[i] = lvlButton;
 			buttonPanel.add(lvlButton);
 			lvlButton.addActionListener(this);
 		}
+		JPanel instructionPanel = new JPanel();
+		instructionPanel.setLayout(new BoxLayout(instructionPanel, BoxLayout.Y_AXIS));
+		instructionPanel.setBackground(new Color(250, 210, 220));
+		instructionPanel.add(new JLabel("Controls :", SwingConstants.CENTER));
+		instructionPanel.add(new JLabel("left click drag: move", SwingConstants.CENTER));
+		instructionPanel.add(new JLabel("right click: rotate clock-wise", SwingConstants.CENTER));
+		instructionPanel.add(new JLabel("R (when piece selected) : rotate clock-wise", SwingConstants.CENTER)); 
+		instructionPanel.add(new JLabel("Shift + R (when piece selected) : rotate counter clock-wise", SwingConstants.CENTER));
+		
+		JPanel centerPanel = new JPanel();
+		centerPanel.setBackground(new Color(250, 210, 220));
+		centerPanel.add(buttonPanel);
+		centerPanel.add(instructionPanel);
 		
 		this.setLayout(new BorderLayout());
 		this.add(title, BorderLayout.NORTH);
-		this.add(buttonPanel, BorderLayout.CENTER);
+		this.add(centerPanel, BorderLayout.CENTER);
 		this.add(credits, BorderLayout.SOUTH);
 	}
 

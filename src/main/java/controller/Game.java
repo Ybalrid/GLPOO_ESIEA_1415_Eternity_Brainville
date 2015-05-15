@@ -18,7 +18,7 @@ public class Game {
 	private GamePanel gamePanel;
 	private HomePanel homePanel;
 	private int currentLevel;
-	private final int levelCount = 4;
+	private final int levelCount = 5;
 	public static final Timer TIMER = new Timer();
 	
 	private Solution solution; // Order of pieces: left-right, then top-bottom
