@@ -83,18 +83,17 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 
 	public void createPiecePanels(Piece[] pieces) {
 		int len = pieces.length;
-		for (int i = 0; i < 16; i++) {
+		for (int i = 0; i < len; i++) {
 			PiecePanel p = new PiecePanel();
 			p.setBackground(Color.BLACK);
+			p.setPiece(pieces[i]);
+			p.setRotation(Math.PI/2 * (int)(Math.random()*4));
+			p.repaint();
 			//this.stock.add(p, BorderLayout.WEST);
-			this.dropTargets.get(i).add(p, BorderLayout.WEST);
+			this.dropTargets.get(i).add(p, BorderLayout.WEST);			
 		}
-		this.stock.validate();
-		for (int i = 0; i < len; i++)
-		{
-			//((PiecePanel)this.stock.getComponent(i)).setPiece(pieces[i]);
-			((PiecePanel)this.dropTargets.get(i).getComponent(0)).setPiece(pieces[i]);
-		}
+		this.puzzle.validate();
+		//this.stock.validate();
 	}
 
 	private ArrayList<PiecePanel> getOrderedPiecePanels() {

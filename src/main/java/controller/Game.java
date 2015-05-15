@@ -1,5 +1,7 @@
 package main.java.controller;
 
+import java.util.Arrays;
+
 import main.java.gui.GamePanel;
 import main.java.model.Face;
 import main.java.model.Piece;
@@ -48,16 +50,27 @@ public class Game {
 		*/
 		this.modelManager.loadFaces();
 		this.modelManager.loadPieces();
-		Piece[] pieces = this.modelManager.getPieces();
+		Piece[] pieces = this.modelManager.getPieces(), piecesCopy = new Piece[pieces.length];
+		for (int i = 0; i < pieces.length; i++) piecesCopy[i] = pieces[i].copy();
 
 		this.solution = new Solution(pieces);
-		this.gamePanel.createPiecePanels(pieces);
+		this.gamePanel.createPiecePanels(piecesCopy);
 	}
 
 	public void checkSolution() {
 		Piece[] pieces = this.gamePanel.getOrderedPieces();
-		/*for (int i = 0; i < this.solution.size; i++) {
-			if (pieces[i] == this.solution.get(i))
-		}*/
+		if (pieces == null) return;
+		int i;
+		
+		for (i = 0; i < this.solution.getSize(); i++) {
+			System.out.println("Piece equality: " + pieces[i] + " " + this.solution.get(i) + " " + !pieces[i].equals(this.solution.get(i)));
+			if (!pieces[i].equals(this.solution.get(i)))
+				break;
+		}
+		System.out.println("");
+		if (i == this.solution.getSize()) {
+			System.out.println("\n*** You just won the game ***\n");
+		}
 	}
 }
+

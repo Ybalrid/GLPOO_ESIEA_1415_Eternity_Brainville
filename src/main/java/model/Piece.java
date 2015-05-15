@@ -36,15 +36,28 @@ public class Piece {
 	public int getOrientation() {
 		return orientation;
 	}
+	
+	public void setOrientation(int orientation) {
+		this.orientation = orientation % this.faces.length;
+	}
+	
+	public Piece copy() {
+		return new Piece(id, faces, positionX, positionY, orientation);
+	}
+	
+	public boolean equals(Piece p) {
+		return id == p.getId() && faces == p.getFaces() && positionX == p.getPositionX()
+		&& positionY == p.getPositionY() && orientation == p.getOrientation();
+	}
 
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("Piece(").append(id).append(",[");
 		for (Face face : this.faces) {
-			s.append(face).append(",");
+			s.append(face.getId()).append(",");
 		}
 		s.append("],(").append(positionX).append(",").append(positionY)
-		.append("),").append(orientation);
+		.append("),").append(orientation).append(")");
 		return s.toString();
 	}
 }
