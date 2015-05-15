@@ -30,6 +30,7 @@ import main.java.gui.interaction.KeyShortcuts;
 public class GamePanel extends JPanel implements MouseListener, MouseMotionListener {
 
 	private Game game;
+	private ArrayList<DragTarget> dragTargets;
 	private ArrayList<DropTarget> dropTargets;
 
 	private PuzzlePanel puzzle;
@@ -61,18 +62,16 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 		this.add(this.puzzle, BorderLayout.CENTER);
 		this.add(this.containerEast, BorderLayout.EAST);
 
-		this.createGrid();
-
 		this.dragInfo = new DragInfo();
 		this.addMouseListener(this);
 		this.addMouseMotionListener(this);
 		new KeyShortcuts(this);
 	}
 
-	public void createGrid() {
-		this.dropTargets = new ArrayList<DropTarget>(17);
+	public void createGrid(int count) {
+		this.dropTargets = new ArrayList<DropTarget>(count + 1);
 
-		for (int i = 0; i < 16; i++) {
+		for (int i = 0; i < count; i++) {
 			CellPanel p = new CellPanel();
 			p.setBackground(new Color(i * 16 + 8, i * 16 + 8, i * 16 + 8));
 			this.puzzle.add(p, BorderLayout.WEST);
@@ -80,9 +79,21 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 		}
 		this.dropTargets.add(stock); // Must add it after cell panels!
 	}
+	
+	public void destroyGrid() {
+		for (int i = 0; i < this.dropTargets.size(); i++) {
+			DropTarget dt = this.dropTargets.get(i);
+			dt.getParent().remove(dt);
+		}
+		this.dropTargets.clear();
+		
+		this.puzzle.validate();
+		this.stock.validate();
+	}
 
 	public void createPiecePanels(Piece[] pieces) {
 		int len = pieces.length;
+		this.dragTargets = new ArrayList<DragTarget>(len);
 		for (int i = 0; i < len; i++) {
 			PiecePanel p = new PiecePanel();
 			p.setBackground(Color.BLACK);
@@ -90,10 +101,22 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 			p.setRotation(Math.PI/2 * (int)(Math.random()*4));
 			p.repaint();
 			//this.stock.add(p, BorderLayout.WEST);
-			this.dropTargets.get(i).add(p, BorderLayout.WEST);			
+			this.dropTargets.get(i).add(p, BorderLayout.WEST);
+			this.dragTargets.add(p);
 		}
 		this.puzzle.validate();
 		//this.stock.validate();
+	}
+	
+	public void destroyPiecePanels() {
+		for (int i = 0; i < this.dragTargets.size(); i++) {
+			DragTarget dt = this.dragTargets.get(i);
+			dt.getParent().remove(dt);
+		}
+		this.dragTargets.clear();
+		
+		this.puzzle.validate();
+		this.stock.validate();
 	}
 
 	private ArrayList<PiecePanel> getOrderedPiecePanels() {

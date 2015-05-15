@@ -57,6 +57,7 @@ public class Game {
 		for (int i = 0; i < pieces.length; i++) piecesCopy[i] = pieces[i].copy();
 
 		this.solution = new Solution(pieces);
+		this.gamePanel.createGrid(piecesCopy.length);
 		this.gamePanel.createPiecePanels(piecesCopy);
 	}
 
@@ -73,6 +74,8 @@ public class Game {
 		System.out.println("");
 		if (i == this.solution.getSize()) {
 			System.out.println("\n*** You just won the game ***\n");
+			this.gamePanel.destroyPiecePanels();
+			this.gamePanel.destroyGrid();
 		}
 	}
 
