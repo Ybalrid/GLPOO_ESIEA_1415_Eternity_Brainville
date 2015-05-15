@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.awt.Shape;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
 import java.awt.BasicStroke;
 
 import main.java.model.Face;
@@ -60,8 +61,10 @@ public class PieceSynthetizer {
 			case "blue": color = new Color(50, 120, 255); break;
 			case "red": color = new Color(255, 50, 50); break;
 			case "green": color = new Color(30, 255, 80); break;
-			case "purple": color = new Color(220, 50, 220); break;
+			case "purple": color = new Color(220, 80, 255); break;
 			case "yellow": color = new Color(220, 255, 50); break;
+			case "brown": color = new Color(180, 120, 30); break;
+			case "cyan": color = new Color(75, 200, 230); break;
 			default:
 				System.out.println("Translated unknown color to black");
 				color = Color.BLACK;
@@ -83,7 +86,10 @@ public class PieceSynthetizer {
 				shape.closePath();
 			break;
 			case "circle":
-				shape = new GeneralPath(new Ellipse2D.Float(35, 5, 30, 30));
+				shape = new GeneralPath(new Ellipse2D.Float(38, 8, 24, 24));
+			break;
+			case "square":
+				shape = new GeneralPath(new Rectangle2D.Float(40, 10, 20, 20));
 			break;
 			case "zigzag":
 				shape.moveTo(50, 0);
@@ -99,21 +105,21 @@ public class PieceSynthetizer {
 				shape.lineTo(50, 0);
 				shape.closePath();
 			break;
-			case "line":
+			case "arrow":
 				shape.moveTo(40, 0);
 				shape.lineTo(60, 0);
 				shape.lineTo(60, 40);
+				shape.lineTo(50, 50);
 				shape.lineTo(40, 40);
 				shape.closePath();
 			break;
 			default:
-				System.out.println("Translated unknown pattern to line");
+				System.out.println("Translated unknown pattern to arrow");
 				shape.moveTo(40, 0);
 				shape.lineTo(60, 0);
 				shape.lineTo(60, 40);
+				shape.lineTo(50, 50);
 				shape.lineTo(40, 40);
-				shape.closePath();
-				//shape = new GeneralPath(new Rectangle());
 			break;
 		}
 		//System.out.println("Translate pattern: " + shape);
