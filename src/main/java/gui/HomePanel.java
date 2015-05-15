@@ -51,6 +51,7 @@ public class HomePanel extends JPanel implements ActionListener {
 			buttonPanel.add(lvlButton);
 			lvlButton.addActionListener(this);
 		}
+		
 		JPanel instructionPanel = new JPanel();
 		instructionPanel.setLayout(new BoxLayout(instructionPanel, BoxLayout.Y_AXIS));
 		instructionPanel.setBackground(new Color(250, 210, 220));
@@ -59,6 +60,8 @@ public class HomePanel extends JPanel implements ActionListener {
 		instructionPanel.add(new JLabel("right click: rotate clock-wise", SwingConstants.CENTER));
 		instructionPanel.add(new JLabel("R (when piece selected) : rotate clock-wise", SwingConstants.CENTER)); 
 		instructionPanel.add(new JLabel("Shift + R (when piece selected) : rotate counter clock-wise", SwingConstants.CENTER));
+		instructionPanel.add(new JLabel(" ", SwingConstants.CENTER));
+		instructionPanel.add(new JLabel("Thanks for playing!", SwingConstants.CENTER));
 		
 		JPanel centerPanel = new JPanel();
 		centerPanel.setBackground(new Color(250, 210, 220));

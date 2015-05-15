@@ -3,6 +3,8 @@ package main.java.controller;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.swing.JOptionPane;
+
 import main.java.gui.MainWindow;
 import main.java.gui.GamePanel;
 import main.java.gui.HomePanel;
@@ -102,6 +104,7 @@ public class Game {
 		// If solved, go to next
 		if (i == this.solution.getSize()) {
 			System.out.println("\n*** You just won the game ***\n");
+			JOptionPane.showMessageDialog(this.window, "You just won the game!");
 			
 			// Deferred call to next level
 			TIMER.schedule(new TimerTask() {
