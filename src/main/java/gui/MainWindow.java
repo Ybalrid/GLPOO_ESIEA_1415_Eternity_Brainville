@@ -13,6 +13,7 @@ import javax.swing.JMenuItem;
 public class MainWindow extends JFrame implements ActionListener {
 
 	private GamePanel gamePanel;
+	private HomePanel homePanel;
 
 	private JMenuBar menuBar;
 	private JMenu menuPartie;
@@ -29,9 +30,7 @@ public class MainWindow extends JFrame implements ActionListener {
 
 		this.constructMenu();
 		this.gamePanel = new GamePanel();
-		// JFrame.add points to JContentPane.add
-		// ContentPane has BorderLayout by default
-		this.add(this.gamePanel);
+		this.homePanel = new HomePanel();
 
 		this.setVisible(true);
 		this.pack();
@@ -69,8 +68,26 @@ public class MainWindow extends JFrame implements ActionListener {
 		this.setJMenuBar(menuBar);
 	}
 
+	public void loadGamePanel() {
+		// JFrame.add points to JContentPane.add
+		// ContentPane has BorderLayout by default
+		this.remove(this.homePanel);
+		this.add(this.gamePanel);
+		this.pack();
+	}
+	
+	public void loadHomePanel() {
+		this.remove(this.gamePanel);
+		this.add(this.homePanel);
+		this.pack();
+	}
+
 	public GamePanel getGamePanel() {
 		return this.gamePanel;
+	}
+	
+	public HomePanel getHomePanel() {
+		return this.homePanel;
 	}
 
 	/*

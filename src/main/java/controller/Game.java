@@ -2,7 +2,9 @@ package main.java.controller;
 
 import java.util.Arrays;
 
+import main.java.gui.MainWindow;
 import main.java.gui.GamePanel;
+import main.java.gui.HomePanel;
 import main.java.model.Face;
 import main.java.model.Piece;
 import main.java.model.Solution;
@@ -10,19 +12,35 @@ import main.java.model.ModelManager;
 
 public class Game {
 
+	private MainWindow window;
 	private GamePanel gamePanel;
+	private HomePanel homePanel;
+	
 	private Solution solution; // Order of pieces: left-right, then top-bottom
 	private ModelManager modelManager;
 
-	public Game(GamePanel gamePanel) {
-		this.gamePanel = gamePanel;
-		gamePanel.setGame(this);
+	public Game(MainWindow window) {
+		this.window = window;
+		this.gamePanel = window.getGamePanel();
+		this.homePanel = window.getHomePanel();
 		this.modelManager = new ModelManager(this);
+		
+		gamePanel.setGame(this);
+		homePanel.setGame(this);
 
-		this.loadLevel(1);
+		this.startHome();
+		//this.loadLevel(1);
 	}
 
-	private void loadLevel(int levelId) {
+	public void startGame() {
+		this.window.loadGamePanel();
+	}
+	
+	public void startHome() {
+		this.window.loadHomePanel();
+	}	
+
+	public void loadLevel(int levelId) {
 		/*
 		Face f0 = new Face(0, "", "", "");
 		Face f1 = new Face(1, "blue", "white", "zigzag");
