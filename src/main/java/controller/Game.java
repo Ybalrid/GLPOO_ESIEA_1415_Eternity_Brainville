@@ -40,6 +40,11 @@ public class Game {
 	public int getLevelCount() {
 		return this.levelCount;
 	}
+	
+	public void restart()
+	{
+		startHome();
+	}
 
 	public void startGame() {
 		this.currentLevel = 0;
