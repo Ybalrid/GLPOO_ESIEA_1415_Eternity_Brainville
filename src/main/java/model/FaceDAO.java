@@ -17,11 +17,12 @@ public class FaceDAO extends CsvDAO {
 	   
 	   for (int i = 0; i < lines.size(); i++) {
 		   values = lines.get(i);
+		   if (values.length <= 1) continue;
 		   id = new Integer(values[1]);
 		   bgColor = values[2];
-		   if (bgColor.equals("black")) {
-			   pattern = "line";
-			   fgColor = "black";
+		   if (values.length <= 3) {
+			   pattern = "square";
+			   fgColor = bgColor;
 		   } else {
 			   pattern = values[3];
 			   fgColor = values[4];

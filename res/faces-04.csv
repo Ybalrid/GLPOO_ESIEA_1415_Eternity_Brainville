@@ -1,0 +1,12 @@
+# type(Bord/Face) id_face couleur_fond forme couleur_forme
+
+B 1 black
+F 2 blue circle white
+F 3 blue triangle white
+F 4 purple triangle white
+F 5 purple arrow yellow
+F 6 blue zigzag brown
+F 7 purple
+F 8 purple zigzag yellow
+F 9 blue zigzag green
+

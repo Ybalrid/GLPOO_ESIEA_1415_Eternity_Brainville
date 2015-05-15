@@ -1,0 +1,18 @@
+# P id_piece id_forme_nord id_forme_est id_forme_sud id_forme_ouest
+
+P 1 1 2 3 1
+P 2 1 2 8 2
+P 3 1 2 2 2
+P 4 1 1 2 2
+P 5 3 4 8 1
+P 6 8 7 5 4
+P 7 2 3 5 7
+P 8 2 1 8 3
+P 9 8 7 9 1
+P 10 5 7 8 7
+P 11 5 3 9 7
+P 12 8 1 9 3
+P 13 9 6 1 1
+P 14 8 6 1 6
+P 15 9 6 1 6
+P 16 9 1 1 6

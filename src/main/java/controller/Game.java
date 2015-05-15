@@ -19,7 +19,7 @@ public class Game {
 		gamePanel.setGame(this);
 		this.modelManager = new ModelManager(this);
 
-		this.loadLevel(1);
+		this.loadLevel(4);
 	}
 
 	private void loadLevel(int levelId) {
