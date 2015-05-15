@@ -38,8 +38,9 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 	private boolean canDrag = false;
 
 
-	public GamePanel()
-	{
+	public GamePanel(Game game) {
+		this.game = game;
+		
 		// setPreferredSize rather than setSize because of layout manager
 		// The contentPane excludes the menu
 		this.setPreferredSize(new Dimension(720,400));
@@ -65,10 +66,12 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 		this.addMouseListener(this);
 		this.addMouseMotionListener(this);
 		new KeyShortcuts(this);
+		
+		this.dropTargets = new ArrayList<DropTarget>();
+		this.dragTargets = new ArrayList<DragTarget>();
 	}
 
 	public void createGrid(int count) {
-		this.dropTargets = new ArrayList<DropTarget>(count + 1);
 
 		for (int i = 0; i < count; i++) {
 			CellPanel p = new CellPanel();
@@ -80,7 +83,8 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 	}
 	
 	public void destroyGrid() {
-		for (int i = 0; i < this.dropTargets.size(); i++) {
+		
+		for (int i = 0; i < this.dropTargets.size() - 1; i++) {
 			DropTarget dt = this.dropTargets.get(i);
 			dt.getParent().remove(dt);
 		}
@@ -91,8 +95,8 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 	}
 
 	public void createPiecePanels(Piece[] pieces) {
+		
 		int len = pieces.length;
-		this.dragTargets = new ArrayList<DragTarget>(len);
 		for (int i = 0; i < len; i++) {
 			PiecePanel p = new PiecePanel();
 			p.setBackground(Color.BLACK);
@@ -108,6 +112,7 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 	}
 	
 	public void destroyPiecePanels() {
+		
 		for (int i = 0; i < this.dragTargets.size(); i++) {
 			DragTarget dt = this.dragTargets.get(i);
 			dt.getParent().remove(dt);
@@ -136,7 +141,7 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 	 * then top-bottom.
 	 * Otherwise, return null.
 	 */
-	public Piece[] getOrderedPieces() { // TODO
+	public Piece[] getOrderedPieces() {
 		ArrayList<PiecePanel> piecePanels = this.getOrderedPiecePanels();
 		int len = piecePanels.size();
 		if (len != 16) return null;
@@ -144,13 +149,9 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 		Piece[] pieces = new Piece[len];
 		for (int i = 0; i < len; i++) {
 			pieces[i] = piecePanels.get(i).getPiece();
-			System.out.println(pieces[i]);
+			//System.out.println(pieces[i]);
 		}
 		return pieces;
-	}
-
-	public void setGame(Game game) {
-		this.game = game;
 	}
 	
 	public Game getGame()
@@ -164,6 +165,7 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 
 	public void rotateSelection(boolean clockwise) {
 		((PiecePanel)this.dragInfo.getSelection()).rotate(clockwise);
+		this.game.checkSolution();
 	}
 
 	/*
@@ -254,8 +256,8 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 			this.remove(selection);
 			this.repaint();
 			//System.out.println("Unselection " + selection.getLocation() + " " + dest.getComponent(0));
-			this.game.checkSolution();
 		}
+		this.game.checkSolution();
 	}
 
 	/* MouseMotionEvent */

@@ -29,9 +29,6 @@ public class PieceDAO extends CsvDAO {
 		   
 		   pieces[i] = new Piece(id, faces, 0, 0, 0);
 	   }
-	   for (Piece piece : pieces) {
-		   System.out.println(piece);
-	   }
 	   return pieces;
    }
 	

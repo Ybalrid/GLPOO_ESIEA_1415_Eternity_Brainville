@@ -23,7 +23,8 @@ public class HomePanel extends JPanel implements ActionListener {
 	
 	private JButton[] levelButtons;
 	
-	public HomePanel() {
+	public HomePanel(Game game) {
+		this.game = game;
 	
 		// setPreferredSize rather than setSize because of layout manager
 		// The contentPane excludes the menu
@@ -40,7 +41,7 @@ public class HomePanel extends JPanel implements ActionListener {
 		
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setBackground(new Color(250, 210, 220));
-		levelButtons = new JButton[4];
+		levelButtons = new JButton[this.game.getLevelCount()];
 		for (int i = 0; i < levelButtons.length; i++) {
 			JButton lvlButton = new JButton("Level " + (i+1));
 			levelButtons[i] = lvlButton;
@@ -52,10 +53,6 @@ public class HomePanel extends JPanel implements ActionListener {
 		this.add(title, BorderLayout.NORTH);
 		this.add(buttonPanel, BorderLayout.CENTER);
 		this.add(credits, BorderLayout.SOUTH);
-	}
-
-	public void setGame(Game game) {
-		this.game = game;
 	}
 
 	public void actionPerformed(ActionEvent e)

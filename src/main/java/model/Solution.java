@@ -19,7 +19,7 @@ public class Solution {
 		for (int i = 0; i < size; i++) {
 			//System.out.println("i / this.size, i % this.size:\n " + (i / dim.width) + " " + (i % dim.width));
 			grid[i / dim.width][i % dim.width] = pieces[i];
-			System.out.println("grid[i / this.size][i % this.size]:\n " + grid[i / dim.width][i % dim.width]);
+			//System.out.println("grid[i / this.size][i % this.size]:\n " + grid[i / dim.width][i % dim.width]);
 		}
 		this.grid = grid;
 	}

@@ -66,11 +66,11 @@ public class PieceSynthetizer {
 			case "brown": color = new Color(180, 120, 30); break;
 			case "cyan": color = new Color(75, 200, 230); break;
 			default:
-				System.out.println("Translated unknown color to black");
+				//System.out.println("Translated unknown color to black");
 				color = Color.BLACK;
 			break;
 		}
-		System.out.println("Translate color: " + color);
+		//System.out.println("Translate color: " + color);
 		return color;
 	}
 
@@ -114,7 +114,7 @@ public class PieceSynthetizer {
 				shape.closePath();
 			break;
 			default:
-				System.out.println("Translated unknown pattern to arrow");
+				//System.out.println("Translated unknown pattern to arrow");
 				shape.moveTo(40, 0);
 				shape.lineTo(60, 0);
 				shape.lineTo(60, 40);
