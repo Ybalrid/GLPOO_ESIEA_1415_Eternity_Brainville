@@ -10,6 +10,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import main.java.controller.Game;
 
 public class MainWindow extends JFrame implements ActionListener {
 
@@ -24,15 +25,15 @@ public class MainWindow extends JFrame implements ActionListener {
 	private JMenuItem itemNouvelle;
 	private JFileChooser fc;
 	
-	public MainWindow()
+	public MainWindow(Game game)
 	{
 		super("Eternity");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 
 		this.constructMenu();
-		this.gamePanel = new GamePanel();
-		this.homePanel = new HomePanel();
+		this.gamePanel = new GamePanel(game);
+		this.homePanel = new HomePanel(game);
 
 		this.setVisible(true);
 		this.pack();
@@ -78,12 +79,14 @@ public class MainWindow extends JFrame implements ActionListener {
 		// ContentPane has BorderLayout by default
 		this.remove(this.homePanel);
 		this.add(this.gamePanel);
+		this.repaint();
 		this.pack();
 	}
 	
 	public void loadHomePanel() {
 		this.remove(this.gamePanel);
 		this.add(this.homePanel);
+		this.repaint();
 		this.pack();
 	}
 

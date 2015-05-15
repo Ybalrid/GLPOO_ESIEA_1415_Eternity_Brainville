@@ -1,6 +1,7 @@
 package main.java.controller;
 
-import java.util.Arrays;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import main.java.gui.MainWindow;
 import main.java.gui.GamePanel;
@@ -15,57 +16,43 @@ public class Game {
 	private MainWindow window;
 	private GamePanel gamePanel;
 	private HomePanel homePanel;
+	private int currentLevel;
+	private final int levelCount = 4;
+	public static final Timer TIMER = new Timer();
 	
 	private Solution solution; // Order of pieces: left-right, then top-bottom
 	private ModelManager modelManager;
 
-	public Game(MainWindow window) {
+	public Game() {
+		this.modelManager = new ModelManager(this);
+	}
+	
+	public void init(MainWindow window) {
 		this.window = window;
 		this.gamePanel = window.getGamePanel();
 		this.homePanel = window.getHomePanel();
-		this.modelManager = new ModelManager(this);
 		
-		gamePanel.setGame(this);
-		homePanel.setGame(this);
-
 		this.startHome();
 		//this.loadLevel(1);
 	}
+	
+	public int getLevelCount() {
+		return this.levelCount;
+	}
 
 	public void startGame() {
+		this.currentLevel = 0;
 		this.window.loadGamePanel();
 	}
 	
 	public void startHome() {
+		this.currentLevel = 0;
 		this.window.loadHomePanel();
 	}	
 
 	public void loadLevel(int levelId) {
-		/*
-		Face f0 = new Face(0, "", "", "");
-		Face f1 = new Face(1, "blue", "white", "zigzag");
-		Face f2 = new Face(2, "purple", "red", "circle");
-		Face f3 = new Face(3, "green", "blue", "triangle");
-		Face f4 = new Face(4, "red", "yellow", "line");
-		Piece p0 = new Piece(0, new Face[]{f0, f3, f3, f0}, 0, 0, 0);
-		Piece p1 = new Piece(1, new Face[]{f0, f2, f4, f3}, 1, 0, 0);
-		Piece p2 = new Piece(2, new Face[]{f0, f4, f4, f2}, 2, 0, 0);
-		Piece p3 = new Piece(3, new Face[]{f0, f0, f3, f4}, 3, 0, 0);
-		Piece p4 = new Piece(4, new Face[]{f3, f1, f3, f0}, 0, 1, 0);
-		Piece p5 = new Piece(5, new Face[]{f4, f3, f1, f1}, 1, 1, 0);
-		Piece p6 = new Piece(6, new Face[]{f4, f1, f2, f3}, 2, 1, 0);
-		Piece p7 = new Piece(7, new Face[]{f3, f0, f2, f1}, 3, 1, 0);
-		Piece p8 = new Piece(8, new Face[]{f3, f4, f4, f0}, 0, 2, 0);
-		Piece p9 = new Piece(9, new Face[]{f1, f3, f1, f4}, 1, 2, 0);
-		Piece p10 = new Piece(10, new Face[]{f2, f1, f4, f3}, 2, 2, 0);
-		Piece p11 = new Piece(11, new Face[]{f2, f0, f2, f1}, 3, 2, 0);
-		Piece p12 = new Piece(12, new Face[]{f4, f3, f0, f0}, 0, 3, 0);
-		Piece p13 = new Piece(13, new Face[]{f1, f2, f0, f3}, 1, 3, 0);
-		Piece p14 = new Piece(14, new Face[]{f4, f4, f0, f2}, 2, 3, 0);
-		Piece p15 = new Piece(15, new Face[]{f2, f0, f0, f4}, 3, 3, 0);
-
-		Piece[] pieces = {p15, p14, p13, p12, p11, p10, p9, p8, p7, p6, p5, p4, p3, p2, p1, p0};
-		*/
+		this.gamePanel.destroyPiecePanels();
+		this.gamePanel.destroyGrid();
 		
 		this.modelManager.loadFaces(levelId);
 		this.modelManager.loadPieces(levelId);
@@ -77,6 +64,8 @@ public class Game {
 		this.solution = new Solution(pieces);
 		this.gamePanel.createGrid(piecesCopy.length);
 		this.gamePanel.createPiecePanels(piecesCopy);
+		
+		this.currentLevel = levelId;
 	}
 
 	public void checkSolution() {
@@ -92,10 +81,17 @@ public class Game {
 		System.out.println("");
 		if (i == this.solution.getSize()) {
 			System.out.println("\n*** You just won the game ***\n");
-			this.gamePanel.destroyPiecePanels();
-			this.gamePanel.destroyGrid();
+			
+			TIMER.schedule(new TimerTask() {
+				@Override public void run() {
+					if (currentLevel == levelCount) {
+						startHome();
+					} else {
+						loadLevel(currentLevel + 1);
+					}
+				}
+			}, 2000);
 		}
 	}
-
 }
 
