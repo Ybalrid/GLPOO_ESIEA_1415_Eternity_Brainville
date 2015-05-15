@@ -25,23 +25,23 @@ public class PieceSynthetizer {
 		int[] xBgPoints = {0, 100, 50};
 		int[] yBgPoints = {0, 0, 50};
 
-		//graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING,				RenderingHints.VALUE_ANTIALIAS_ON);
+		graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING,				RenderingHints.VALUE_ANTIALIAS_ON);
 		graphics.setStroke(new BasicStroke(0));
 
 		for (int orientation = 0; orientation < 4; orientation++)
 		{
-			graphics.rotate(Math.PI / 2, 50, 50);
-		
 			graphics.setColor(translateColor(faces[orientation].getBgColor()));
 			graphics.fillPolygon(xBgPoints, yBgPoints, 3);
 
 			graphics.setColor(translateColor(faces[orientation].getFgColor()));
 			graphics.fill(translatePattern(faces[orientation].getPattern()));
+			
+			graphics.rotate(Math.PI / 2, 50, 50);
 		}
 
 		graphics.setColor(Color.BLACK);
 		graphics.setStroke(new BasicStroke(2));
-		graphics.drawRect(1, 1, 98, 98);
+		graphics.drawRect(0, 0, 99, 99);
 		graphics.setStroke(new BasicStroke(0));
 		graphics.drawLine(1, 1, 99, 99);
 		graphics.drawLine(99, 1, 1, 99);

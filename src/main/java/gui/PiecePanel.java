@@ -57,7 +57,7 @@ public class PiecePanel extends DragTarget {
 	
 	public void setRotation(double rotation) {
 		this.rotation = rotation;
-		this.piece.setOrientation((int)(rotation / Math.PI*2));
+		this.piece.setOrientation((int)Math.round(rotation / Math.PI*2));
 	}
 	
 	public void rotate(boolean clockwise) {

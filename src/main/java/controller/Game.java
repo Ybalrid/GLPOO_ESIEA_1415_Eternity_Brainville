@@ -93,7 +93,7 @@ public class Game {
 		
 		// Checking by identification
 		for (i = 0; i < this.solution.getSize(); i++) {
-			//System.out.println("Piece equality: " + pieces[i] + " " + this.solution.get(i) + " " + !pieces[i].equals(this.solution.get(i)));
+			//System.out.println("Piece inequality: " + pieces[i] + " " + this.solution.get(i) + " " + !pieces[i].equals(this.solution.get(i)));
 			if (!pieces[i].equals(this.solution.get(i)))
 				break;
 		}
