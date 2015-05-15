@@ -38,6 +38,9 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 	private StockPanel stock;
 
 	private DragInfo dragInfo;
+	
+	private boolean canDrag = false;
+
 
 	public GamePanel()
 	{
@@ -180,6 +183,7 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 	public void mouseExited(MouseEvent e) {
 //		System.out.print("[Exited] ");// Point: " + e.getX() + ", " + e.getY() + " ");
 	}
+	
 
 	@Override
 	public void mousePressed(MouseEvent e) {
@@ -208,12 +212,15 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 				this.add(selection, 0);
 				this.repaint();
 				System.out.println("Selection: " + selection + " ");
+				canDrag = true;
 			}
 		}
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		if(e.getButton() == MouseEvent.BUTTON1)
+			canDrag = false;
 		Point globalPos = e.getPoint();
 		System.out.println("[Released] " + e.getButton() + " (" + globalPos.x + "," + globalPos.y + ") ");
 
@@ -259,9 +266,8 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		//System.out.print("[Dragged] ");// + e.getPoint() + " ");
 		DragTarget selection = this.dragInfo.getSelection();
-		if (selection != null && e.getButton() != MouseEvent.BUTTON3) {
+		if (canDrag && selection != null && e.getButton() != MouseEvent.BUTTON3) {
 			Point globalPos = e.getPoint();
 			System.out.println("Drag selection: " + selection.getLocation() + " " + globalPos);
 			selection.setLocation(globalPos.x - selection.getWidth()/2, globalPos.y - selection.getHeight()/2);
