@@ -13,10 +13,6 @@ import java.awt.event.MouseMotionListener;
 import java.awt.BorderLayout;
 import java.awt.Component;
 
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
@@ -155,6 +151,11 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 
 	public void setGame(Game game) {
 		this.game = game;
+	}
+	
+	public Game getGame()
+	{
+		return game;
 	}
 
 	public DragInfo getDragInfo() {
