@@ -13,8 +13,8 @@ public abstract class CsvDAO {
 	private File file;
 	private final static char SEPARATOR = ' ';
 	
-	public CsvDAO (File file) {
-		this.file = file;
+	public CsvDAO (String filename) {
+		this.file = new File(filename);
 	}
 	
 	protected List<String[]> getLinesFromFile() {

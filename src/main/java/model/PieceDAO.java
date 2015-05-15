@@ -1,14 +1,13 @@
 package main.java.model;
 
-import java.io.File;
 import java.util.List;
 
 public class PieceDAO extends CsvDAO {
 	
 	private ModelManager modelManager;
 
-	public PieceDAO(ModelManager modelManager) {
-		super (new File("res/pieces-01.csv"));
+	public PieceDAO(String id, ModelManager modelManager) {
+		super ("res/pieces-" + id + ".csv");
 		this.modelManager = modelManager;
 	}
 	

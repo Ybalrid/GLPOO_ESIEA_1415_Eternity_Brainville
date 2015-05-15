@@ -19,10 +19,10 @@ public class Game {
 		gamePanel.setGame(this);
 		this.modelManager = new ModelManager(this);
 
-		this.loadLevel();
+		this.loadLevel(1);
 	}
 
-	private void loadLevel() {
+	private void loadLevel(int levelId) {
 		/*
 		Face f0 = new Face(0, "", "", "");
 		Face f1 = new Face(1, "blue", "white", "zigzag");
@@ -48,9 +48,12 @@ public class Game {
 
 		Piece[] pieces = {p15, p14, p13, p12, p11, p10, p9, p8, p7, p6, p5, p4, p3, p2, p1, p0};
 		*/
-		this.modelManager.loadFaces();
-		this.modelManager.loadPieces();
+		
+		this.modelManager.loadFaces(levelId);
+		this.modelManager.loadPieces(levelId);
+		
 		Piece[] pieces = this.modelManager.getPieces(), piecesCopy = new Piece[pieces.length];
+		// Array copy
 		for (int i = 0; i < pieces.length; i++) piecesCopy[i] = pieces[i].copy();
 
 		this.solution = new Solution(pieces);
@@ -63,7 +66,7 @@ public class Game {
 		int i;
 		
 		for (i = 0; i < this.solution.getSize(); i++) {
-			System.out.println("Piece equality: " + pieces[i] + " " + this.solution.get(i) + " " + !pieces[i].equals(this.solution.get(i)));
+			//System.out.println("Piece equality: " + pieces[i] + " " + this.solution.get(i) + " " + !pieces[i].equals(this.solution.get(i)));
 			if (!pieces[i].equals(this.solution.get(i)))
 				break;
 		}
@@ -72,5 +75,6 @@ public class Game {
 			System.out.println("\n*** You just won the game ***\n");
 		}
 	}
+
 }
 

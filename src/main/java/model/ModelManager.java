@@ -46,12 +46,12 @@ public class ModelManager {
 		this.pieces = pieces;
 	}
 	
-	public void loadFaces() {
-		this.setFaces(new FaceDAO().getFaces());
+	public void loadFaces(int id) {
+		this.setFaces(new FaceDAO(String.format("%02d", id)).getFaces());
 	}
 	
-	public void loadPieces() {
-		this.setPieces(new PieceDAO(this).getPieces());
+	public void loadPieces(int id) {
+		this.setPieces(new PieceDAO(String.format("%02d", id), this).getPieces());
 	}
 	
 }

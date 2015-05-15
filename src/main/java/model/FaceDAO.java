@@ -1,12 +1,11 @@
 package main.java.model;
 
-import java.io.File;
 import java.util.List;
 
 public class FaceDAO extends CsvDAO {
 	
-	public FaceDAO() {
-		super (new File("res/faces-01.csv"));
+	public FaceDAO(String id) {
+		super ("res/faces-" + id + ".csv");
 	}
 	
    public Face[] getFaces() {
@@ -30,14 +29,6 @@ public class FaceDAO extends CsvDAO {
 		   faces[i] = new Face(id, bgColor, fgColor, pattern);
 	   }
 	   return faces;
-   }
-   
-   public static void main(String[] args) {
-	   FaceDAO fd = new FaceDAO();
-	   for (Face f : fd.getFaces()) {
-		   System.out.println(f);
-	   }
-	   
    }
 
 }
