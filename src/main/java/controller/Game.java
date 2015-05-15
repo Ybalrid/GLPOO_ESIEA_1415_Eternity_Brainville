@@ -66,7 +66,7 @@ public class Game {
 			piecesCopy[i] = pieces[i].copy(); // Array copy
 
 		// Create level
-		this.solution = new Solution(pieces);
+		this.solution = new Solution(pieces, 4);
 		this.gamePanel.createGrid(piecesCopy.length);
 		this.gamePanel.createPiecePanels(piecesCopy);
 		

@@ -2,6 +2,7 @@ package main.java.model;
 
 import main.java.controller.Game;
 
+/* Manage and centralises resources */
 public class ModelManager {
 	
 	private Game game;

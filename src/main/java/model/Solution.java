@@ -9,12 +9,12 @@ public class Solution {
 
 	public Solution(Piece[][] grid) {
 		this.grid = grid;
-		this.dim = new Dimension(4, 4);
+		this.dim = new Dimension(grid.length, grid[0].length);
 	}
 
-	public Solution(Piece[] pieces) {
-		this.dim = new Dimension(4, 4);
-		int size = 16;
+	public Solution(Piece[] pieces, int width) {
+		int size = pieces.length;
+		this.dim = new Dimension(width, size / width);
 		Piece[][] grid = new Piece[dim.height][dim.width];
 		for (int i = 0; i < size; i++) {
 			//System.out.println("i / this.size, i % this.size:\n " + (i / dim.width) + " " + (i % dim.width));
@@ -24,20 +24,24 @@ public class Solution {
 		this.grid = grid;
 	}
 
+	// Get a piece using two indices
 	public Piece get(int i, int j) {
 		return grid[j][i];
 	}
 
+	// Get a piece using one index
 	public Piece get(int i) {
-		int len = grid.length;
-		return grid[i / len][i % len];
+		return grid[i / dim.width][i % dim.width];
 	}
 	
+	// Get width and height as a single object
 	public Dimension getDim() {
 		return this.dim;
 	}
 	
+	// Get total size (width * height)
 	public int getSize() {
 		return this.dim.width * this.dim.height;
 	}
+	
 }
