@@ -22,7 +22,8 @@ public class SaveDAO extends CsvDAO {
 		System.out.println("Loading");
 		//Read the CSV file
 		//Apply content to the game (create faces and pieces and so on
-		//Relaunch it with theses data
+		//Relaunch it with theses date
+		
 	}
 	
 	public void save()
@@ -52,25 +53,12 @@ public class SaveDAO extends CsvDAO {
 				pieceDesc[2 + 3 + 4*i] = p.getFaces()[i].getFgColor();
 			}
 			
-			for(String s : pieceDesc)
-				System.out.println(s);
+			//for(String s : pieceDesc)
+				//System.out.println(s);
 			
 			gameContent.add(pieceDesc);
-			/*System.out.println("Peice : " + ++debug + " id " + p.getId() + " orientation " + p.getOrientation() + " x:" + p.getPositionX() + " y:" +  p.getPositionY());
-			for(Face f : p.getFaces())
-			{
-				System.out.println(" Face : " + f.getId() + " patern " + f.getPattern() + " " + f.getBgColor() + " " + f.getFgColor());
-			}*/
-			
-			
 		}
-		
 		this.writeLineFromArray(gameContent);
-		
-		//Get all information in text form
-		//create an Array<Strings> that represent the content of the CSV to write
-		//wite it with 
-		//this.writeLineFromArray(array);
 	}
 
 }
