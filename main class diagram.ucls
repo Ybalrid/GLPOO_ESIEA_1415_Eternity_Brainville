@@ -3,91 +3,91 @@
   realizations="true" associations="true" dependencies="true" nesting-relationships="true">  
   <class id="1" language="java" name="main.java.Eternity" project="GLPOO_ESIEA_1415_Eternity_Brainville" 
     file="/GLPOO_ESIEA_1415_Eternity_Brainville/src/main/java/Eternity.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="113" x="250" y="37"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <position height="99" width="113" x="980" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="main.java.bidonCSV" project="GLPOO_ESIEA_1415_Eternity_Brainville" 
-    file="/GLPOO_ESIEA_1415_Eternity_Brainville/src/main/java/bidonCSV.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="148" x="41" y="176"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="3" language="java" name="main.java.controller.Game" project="GLPOO_ESIEA_1415_Eternity_Brainville" 
+  <class id="2" language="java" name="main.java.controller.Game" project="GLPOO_ESIEA_1415_Eternity_Brainville" 
     file="/GLPOO_ESIEA_1415_Eternity_Brainville/src/main/java/controller/Game.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="124" x="250" y="868"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <position height="153" width="124" x="869" y="1470"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="main.java.controller.PieceSynthetizer" 
+  <class id="3" language="java" name="main.java.controller.PieceSynthetizer" 
     project="GLPOO_ESIEA_1415_Eternity_Brainville" 
     file="/GLPOO_ESIEA_1415_Eternity_Brainville/src/main/java/controller/PieceSynthetizer.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="135" width="184" x="588" y="1483"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <position height="135" width="184" x="496" y="1735"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="main.java.gui.StockPanel" project="GLPOO_ESIEA_1415_Eternity_Brainville" 
-    file="/GLPOO_ESIEA_1415_Eternity_Brainville/src/main/java/gui/StockPanel.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="178" x="461" y="1236"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="6" language="java" name="main.java.gui.CellPanel" project="GLPOO_ESIEA_1415_Eternity_Brainville" 
+  <class id="4" language="java" name="main.java.gui.CellPanel" project="GLPOO_ESIEA_1415_Eternity_Brainville" 
     file="/GLPOO_ESIEA_1415_Eternity_Brainville/src/main/java/gui/CellPanel.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="178" x="679" y="1236"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <position height="117" width="178" x="87" y="1470"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="main.java.gui.GamePanel" project="GLPOO_ESIEA_1415_Eternity_Brainville" 
+  <class id="5" language="java" name="main.java.gui.GamePanel" project="GLPOO_ESIEA_1415_Eternity_Brainville" 
     file="/GLPOO_ESIEA_1415_Eternity_Brainville/src/main/java/gui/GamePanel.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="369" width="259" x="746" y="459"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <position height="423" width="259" x="485" y="531"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="main.java.gui.MainWindow" project="GLPOO_ESIEA_1415_Eternity_Brainville" 
+  <class id="6" language="java" name="main.java.gui.HomePanel" project="GLPOO_ESIEA_1415_Eternity_Brainville" 
+    file="/GLPOO_ESIEA_1415_Eternity_Brainville/src/main/java/gui/HomePanel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="194" x="759" y="1205"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="main.java.gui.MainWindow" project="GLPOO_ESIEA_1415_Eternity_Brainville" 
     file="/GLPOO_ESIEA_1415_Eternity_Brainville/src/main/java/gui/MainWindow.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="243" width="194" x="250" y="176"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <position height="315" width="194" x="765" y="176"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="main.java.gui.PiecePanel" project="GLPOO_ESIEA_1415_Eternity_Brainville" 
+  <class id="8" language="java" name="main.java.gui.PiecePanel" project="GLPOO_ESIEA_1415_Eternity_Brainville" 
     file="/GLPOO_ESIEA_1415_Eternity_Brainville/src/main/java/gui/PiecePanel.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="207" width="178" x="897" y="1236"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <position height="225" width="178" x="523" y="1470"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="main.java.gui.PuzzlePanel" project="GLPOO_ESIEA_1415_Eternity_Brainville" 
+  <class id="9" language="java" name="main.java.gui.PuzzlePanel" project="GLPOO_ESIEA_1415_Eternity_Brainville" 
     file="/GLPOO_ESIEA_1415_Eternity_Brainville/src/main/java/gui/PuzzlePanel.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="178" x="414" y="868"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <position height="99" width="178" x="42" y="994"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="main.java.gui.StockPanel" project="GLPOO_ESIEA_1415_Eternity_Brainville" 
+    file="/GLPOO_ESIEA_1415_Eternity_Brainville/src/main/java/gui/StockPanel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="178" x="305" y="1470"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
@@ -97,8 +97,8 @@
     project="GLPOO_ESIEA_1415_Eternity_Brainville" 
     file="/GLPOO_ESIEA_1415_Eternity_Brainville/src/main/java/gui/interaction/KeyShortcuts.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="99" width="201" x="505" y="176"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <position height="99" width="201" x="199" y="176"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
@@ -108,8 +108,8 @@
     project="GLPOO_ESIEA_1415_Eternity_Brainville" 
     file="/GLPOO_ESIEA_1415_Eternity_Brainville/src/main/java/gui/interaction/KeyShortcuts.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="99" width="194" x="746" y="176"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <position height="99" width="194" x="440" y="176"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
@@ -119,8 +119,8 @@
     project="GLPOO_ESIEA_1415_Eternity_Brainville" 
     file="/GLPOO_ESIEA_1415_Eternity_Brainville/src/main/java/gui/interaction/DropTarget.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="99" width="181" x="653" y="1079"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <position height="99" width="181" x="302" y="1205"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
@@ -130,8 +130,8 @@
     project="GLPOO_ESIEA_1415_Eternity_Brainville" 
     file="/GLPOO_ESIEA_1415_Eternity_Brainville/src/main/java/gui/interaction/DragInfo.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="171" width="169" x="674" y="868"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <position height="171" width="169" x="342" y="994"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
@@ -141,8 +141,8 @@
     project="GLPOO_ESIEA_1415_Eternity_Brainville" 
     file="/GLPOO_ESIEA_1415_Eternity_Brainville/src/main/java/gui/interaction/KeyShortcuts.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="81" width="154" x="961" y="37"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <position height="81" width="154" x="488" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
@@ -152,8 +152,8 @@
     project="GLPOO_ESIEA_1415_Eternity_Brainville" 
     file="/GLPOO_ESIEA_1415_Eternity_Brainville/src/main/java/gui/interaction/DragTarget.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="81" width="112" x="895" y="1079"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <position height="81" width="112" x="523" y="1205"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
@@ -161,260 +161,393 @@
   </class>  
   <class id="17" language="java" name="main.java.model.Solution" project="GLPOO_ESIEA_1415_Eternity_Brainville" 
     file="/GLPOO_ESIEA_1415_Eternity_Brainville/src/main/java/model/Solution.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="110" x="290" y="1079"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <position height="189" width="118" x="762" y="1735"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="main.java.model.Face" project="GLPOO_ESIEA_1415_Eternity_Brainville" 
+  <class id="18" language="java" name="main.java.model.ModelManager" project="GLPOO_ESIEA_1415_Eternity_Brainville" 
+    file="/GLPOO_ESIEA_1415_Eternity_Brainville/src/main/java/model/ModelManager.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="225" width="136" x="1056" y="1205"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="main.java.model.PieceDAO" project="GLPOO_ESIEA_1415_Eternity_Brainville" 
+    file="/GLPOO_ESIEA_1415_Eternity_Brainville/src/main/java/model/PieceDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="184" x="1045" y="994"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="main.java.model.Face" project="GLPOO_ESIEA_1415_Eternity_Brainville" 
     file="/GLPOO_ESIEA_1415_Eternity_Brainville/src/main/java/model/Face.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="243" width="162" x="421" y="1959"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <position height="243" width="162" x="1056" y="2319"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="19" language="java" name="main.java.model.Piece" project="GLPOO_ESIEA_1415_Eternity_Brainville" 
+  <class id="21" language="java" name="main.java.model.CsvDAO" project="GLPOO_ESIEA_1415_Eternity_Brainville" 
+    file="/GLPOO_ESIEA_1415_Eternity_Brainville/src/main/java/model/CsvDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="181" x="1020" y="531"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="main.java.model.FaceDAO" project="GLPOO_ESIEA_1415_Eternity_Brainville" 
+    file="/GLPOO_ESIEA_1415_Eternity_Brainville/src/main/java/model/FaceDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="112" x="1096" y="1470"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="main.java.model.Piece" project="GLPOO_ESIEA_1415_Eternity_Brainville" 
     file="/GLPOO_ESIEA_1415_Eternity_Brainville/src/main/java/model/Piece.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="261" width="146" x="421" y="1658"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <position height="315" width="146" x="889" y="1964"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="20">    
-    <bendpoint x="643" y="868"/>    
+  <association id="24">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="25" name="game"/>      
+      <multiplicity id="26" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="27">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="28" name="puzzle"/>      
+      <multiplicity id="29" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="30">    
     <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="21" name="dropTargets"/>      
-      <multiplicity id="22" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="23">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="24" name="gamePanel"/>      
-      <multiplicity id="25" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="26">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="7"/>  
-  </dependency>  
-  <dependency id="27">    
-    <bendpoint x="1037" y="868"/>    
-    <bendpoint x="1037" y="1079"/>    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="9"/>  
-  </dependency>  
-  <association id="28">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="29" name="origin"/>      
-      <multiplicity id="30" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="31">    
-    <bendpoint x="597" y="1658"/>    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="18"/>  
-  </dependency>  
-  <nesting id="32">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="12"/>  
-  </nesting>  
-  <association id="33">    
-    <end type="SOURCE" refId="19" navigable="false">      
-      <attribute id="34" name="faces"/>      
-      <multiplicity id="35" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="36">    
-    <bendpoint x="259" y="459"/>    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="3"/>  
-  </dependency>  
-  <generalization id="37">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="13"/>  
-  </generalization>  
-  <association id="38">    
-    <bendpoint x="970" y="176"/>    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="39" name="comp"/>      
-      <multiplicity id="40" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="41">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="8"/>  
-  </dependency>  
-  <association id="42">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="43" name="selection"/>      
-      <multiplicity id="44" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="45">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="19"/>  
-  </dependency>  
-  <dependency id="46">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="7"/>  
-  </dependency>  
-  <association id="47">    
-    <bendpoint x="557" y="1483"/>    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="48" name="piece"/>      
-      <multiplicity id="49" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="50">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="16"/>  
-  </generalization>  
-  <dependency id="51">    
-    <bendpoint x="259" y="1079"/>    
-    <bendpoint x="259" y="1236"/>    
-    <bendpoint x="259" y="1483"/>    
-    <bendpoint x="259" y="1658"/>    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="18"/>  
-  </dependency>  
-  <dependency id="52">    
-    <bendpoint x="430" y="1079"/>    
-    <bendpoint x="430" y="1236"/>    
-    <bendpoint x="430" y="1483"/>    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="19"/>  
-  </dependency>  
-  <nesting id="53">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="11"/>  
-  </nesting>  
-  <dependency id="54">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="2"/>  
-  </dependency>  
-  <association id="55">    
-    <bendpoint x="365" y="1236"/>    
-    <bendpoint x="365" y="1483"/>    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="56" name="grid"/>      
-      <multiplicity id="57" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="58">    
-    <bendpoint x="622" y="868"/>    
-    <bendpoint x="622" y="1079"/>    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="59" name="stock"/>      
-      <multiplicity id="60" minimum="0" maximum="1"/>    
+      <attribute id="31" name="gamePanel"/>      
+      <multiplicity id="32" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="61">    
-    <bendpoint x="474" y="176"/>    
+  <dependency id="33">    
+    <bendpoint x="910" y="1735"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="23"/>  
+  </dependency>  
+  <association id="34">    
+    <bendpoint x="728" y="1205"/>    
+    <bendpoint x="728" y="994"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="35" name="gamePanel"/>      
+      <multiplicity id="36" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="37">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="7"/>  
   </dependency>  
-  <association id="62">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="63" name="game"/>      
-      <multiplicity id="64" minimum="0" maximum="1"/>    
+  <dependency id="38">    
+    <bendpoint x="785" y="1964"/>    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="20"/>  
+  </dependency>  
+  <association id="39">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="40" name="origin"/>      
+      <multiplicity id="41" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
+    <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="65">    
-    <bendpoint x="1105" y="868"/>    
-    <bendpoint x="1105" y="1079"/>    
-    <bendpoint x="1105" y="1236"/>    
-    <bendpoint x="1105" y="1483"/>    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="19"/>  
+  <dependency id="42">    
+    <bendpoint x="1238" y="1205"/>    
+    <bendpoint x="1238" y="1470"/>    
+    <bendpoint x="1238" y="1735"/>    
+    <bendpoint x="1238" y="1964"/>    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="20"/>  
   </dependency>  
-  <dependency id="66">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="4"/>  
-  </dependency>  
-  <dependency id="67">    
-    <bendpoint x="991" y="176"/>    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="15"/>  
-  </dependency>  
-  <generalization id="68">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="13"/>  
-  </generalization>  
-  <association id="69">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="70" name="dragInfo"/>      
-      <multiplicity id="71" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="72">    
-    <bendpoint x="219" y="176"/>    
-    <bendpoint x="219" y="459"/>    
-    <end type="SOURCE" refId="1"/>    
+  <dependency id="43">    
+    <end type="SOURCE" refId="8"/>    
     <end type="TARGET" refId="3"/>  
   </dependency>  
-  <association id="73">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="74" name="solution"/>      
-      <multiplicity id="75" minimum="0" maximum="1"/>    
+  <association id="44">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="45" name="selection"/>      
+      <multiplicity id="46" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
+    <end type="TARGET" refId="16" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="76">    
-    <bendpoint x="873" y="868"/>    
-    <bendpoint x="864" y="1079"/>    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="6"/>  
+  <association id="47">    
+    <bendpoint x="1044" y="1470"/>    
+    <bendpoint x="1044" y="1735"/>    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="48" name="pieces"/>      
+      <multiplicity id="49" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="50">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="51" name="homePanel"/>      
+      <multiplicity id="52" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="53">    
+    <bendpoint x="250" y="994"/>    
+    <bendpoint x="250" y="1205"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="4"/>  
   </dependency>  
-  <dependency id="77">    
-    <bendpoint x="894" y="868"/>    
-    <end type="SOURCE" refId="7"/>    
+  <nesting id="54">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="11"/>  
+  </nesting>  
+  <association id="55">    
+    <bendpoint x="1065" y="1470"/>    
+    <bendpoint x="1065" y="1735"/>    
+    <bendpoint x="1065" y="1964"/>    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="56" name="faces"/>      
+      <multiplicity id="57" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="58">    
+    <bendpoint x="1025" y="1205"/>    
+    <bendpoint x="1023" y="1470"/>    
+    <bendpoint x="1023" y="1735"/>    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="23"/>  
+  </dependency>  
+  <association id="59">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="60" name="faces"/>      
+      <multiplicity id="61" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="62">    
+    <bendpoint x="989" y="176"/>    
+    <bendpoint x="989" y="531"/>    
+    <bendpoint x="989" y="994"/>    
+    <bendpoint x="1004" y="1205"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <generalization id="63">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="13"/>  
+  </generalization>  
+  <dependency id="64">    
+    <bendpoint x="686" y="994"/>    
+    <bendpoint x="686" y="1205"/>    
+    <bendpoint x="731" y="1470"/>    
+    <bendpoint x="731" y="1735"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="23"/>  
+  </dependency>  
+  <generalization id="65">    
+    <end type="SOURCE" refId="8"/>    
     <end type="TARGET" refId="16"/>  
+  </generalization>  
+  <dependency id="66">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="5"/>  
   </dependency>  
-  <association id="78">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="79" name="gamePanel"/>      
-      <multiplicity id="80" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="81">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="82" name="puzzle"/>      
-      <multiplicity id="83" minimum="0" maximum="1"/>    
+  <dependency id="67">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="68">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="23"/>  
+  </dependency>  
+  <association id="69">    
+    <bendpoint x="271" y="994"/>    
+    <bendpoint x="271" y="1205"/>    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="70" name="stock"/>      
+      <multiplicity id="71" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <association id="72">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="73" name="modelManager"/>      
+      <multiplicity id="74" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="75">    
+    <bendpoint x="664" y="176"/>    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="76" name="comp"/>      
+      <multiplicity id="77" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="78">    
+    <bendpoint x="541" y="994"/>    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="79" name="dragTargets"/>      
+      <multiplicity id="80" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="81">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="82" name="grid"/>      
+      <multiplicity id="83" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="84">    
+    <bendpoint x="1085" y="1735"/>    
+    <bendpoint x="1085" y="1964"/>    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="20"/>  
+  </dependency>  
+  <association id="85">    
+    <bendpoint x="983" y="1205"/>    
+    <bendpoint x="968" y="994"/>    
+    <bendpoint x="968" y="531"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="86" name="window"/>      
+      <multiplicity id="87" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="88">    
+    <bendpoint x="1259" y="1205"/>    
+    <bendpoint x="1259" y="994"/>    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="21"/>  
+  </generalization>  
+  <generalization id="89">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="13"/>  
+  </generalization>  
+  <association id="90">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="91" name="modelManager"/>      
+      <multiplicity id="92" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="93">    
+    <bendpoint x="665" y="994"/>    
+    <bendpoint x="665" y="1205"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <generalization id="94">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="21"/>  
+  </generalization>  
+  <association id="95">    
+    <bendpoint x="707" y="994"/>    
+    <bendpoint x="707" y="1205"/>    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="96" name="game"/>      
+      <multiplicity id="97" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="98">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="99" name="dragInfo"/>      
+      <multiplicity id="100" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="101">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <association id="102">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="103" name="solution"/>      
+      <multiplicity id="104" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="105">    
+    <bendpoint x="311" y="994"/>    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="106" name="dropTargets"/>      
+      <multiplicity id="107" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="108">    
+    <bendpoint x="774" y="531"/>    
+    <bendpoint x="774" y="994"/>    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="109" name="homePanel"/>      
+      <multiplicity id="110" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="111">    
+    <bendpoint x="710" y="1735"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="112" name="piece"/>      
+      <multiplicity id="113" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="114">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="115" name="game"/>      
+      <multiplicity id="116" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="117">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="12"/>  
+  </nesting>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
