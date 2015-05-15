@@ -21,19 +21,34 @@ public class SaveDAO extends CsvDAO {
 	
 	public void load()
 	{
+		Game game = modelManager.getGame();
+
 		System.out.println("Loading");
 		//Read the CSV file
 		//Apply content to the game (create faces and pieces and so on
 		//Relaunch it with theses date
 		
 		java.util.List<String[]> gameContent = this.getLinesFromFile(0);
+		if(gameContent.size() != 16) 
+		{
+			JOptionPane.showMessageDialog(game.getGamePanel(),
+					"Fichier invalide", "Error", 0);
+			return;
+		}
 		
 		for(String[] strings : gameContent)
 			for(String string : strings)
 				System.out.println(string);
 		
-		Game game = modelManager.getGame();
-			
+		Piece[] pieces = new Piece[16];
+		
+		for(int i = 0; i < 16; i++)
+		{
+			//peices[i] = new Piece()
+		}
+	
+		
+		
 		
 	}
 	
