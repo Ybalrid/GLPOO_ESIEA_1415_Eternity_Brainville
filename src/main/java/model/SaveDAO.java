@@ -26,6 +26,15 @@ public class SaveDAO extends CsvDAO {
 		//Apply content to the game (create faces and pieces and so on
 		//Relaunch it with theses date
 		
+		java.util.List<String[]> gameContent = this.getLinesFromFile(0);
+		
+		for(String[] strings : gameContent)
+			for(String string : strings)
+				System.out.println(string);
+		
+		Game game = modelManager.getGame();
+			
+		
 	}
 	
 	public void save()
@@ -46,7 +55,6 @@ public class SaveDAO extends CsvDAO {
 		
 		ArrayList<String[]> gameContent = new ArrayList<String[]>();
 
-		int debug = 0;
 		for(Piece p : pieces)
 		{
 			//Piece ID, Piece Orient, F1 ID, F1 Pat, F1 bg, F1 FG, F2 ID, F2 pat... etc..

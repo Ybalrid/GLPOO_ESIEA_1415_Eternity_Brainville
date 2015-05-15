@@ -29,7 +29,6 @@ public abstract class CsvDAO {
 	}
 
 	protected List<String[]> getLinesFromFile(int startLine) {
-
 		CSVReader csvReader;
 		List<String[]> lines = null;
 		
