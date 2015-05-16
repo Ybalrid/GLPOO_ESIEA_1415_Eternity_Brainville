@@ -1,10 +1,13 @@
 package test.java;
 
-import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.Test;
+import java.awt.Dimension;
 
+import main.java.model.Face;
+import main.java.model.Piece;
 import main.java.model.Solution;
+
+import static org.junit.Assert.*;
+import org.junit.Test;
 
 public class SolutionTest {
 
@@ -32,12 +35,12 @@ public class SolutionTest {
 		Piece p14 = new Piece(14, new Face[]{f4, f4, f0, f2}, 2, 3, 0);
 		Piece p15 = new Piece(15, new Face[]{f2, f0, f0, f4}, 3, 3, 0);
 		Piece[] pieces = {p15, p14, p13, p12, p11, p10, p9, p8, p7, p6, p5, p4, p3, p2, p1, p0};
-		Solution solution = new Solution(pieces);
+		Solution solution = new Solution(pieces, 4);
 		
-		AssertEquals(solution.getDim().equals(new Dimension(4,4)));
-		AssertEquals(solution.getSize() == 16);
-		AssertEquals(solution.get(4).equals(p11));
-		AssertEquals(solution.get(0, 1).equals(p11));
+		assertTrue(solution.getDim().equals(new Dimension(4,4)));
+		assertTrue(solution.getSize() == 16);
+		assertTrue(solution.get(4).equals(p11));
+		assertTrue(solution.get(0, 1).equals(p11));
 	}
 }
 
