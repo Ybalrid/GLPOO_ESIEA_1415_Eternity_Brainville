@@ -8,17 +8,20 @@ import javax.swing.InputMap;
 import javax.swing.ActionMap;
 import javax.swing.KeyStroke;
 
+import main.java.gui.MainWindow;
 import main.java.gui.GamePanel;
 
 public class KeyShortcuts {
 
-	private GamePanel comp;
+	private MainWindow window;
+	private GamePanel gamePanel;
 
-	public KeyShortcuts(GamePanel comp) {
-		this.comp = comp;
+	public KeyShortcuts(MainWindow window) {
+		this.window = window;
+		this.gamePanel = window.getGamePanel();
 
-		InputMap inputMap = comp.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-		ActionMap actionMap = comp.getActionMap();
+		InputMap inputMap = gamePanel.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		ActionMap actionMap = gamePanel.getActionMap();
 
 		// R: rotate piece clockwise
 		inputMap.put(KeyStroke.getKeyStroke("R"), "rotateClockwise");
@@ -32,14 +35,14 @@ public class KeyShortcuts {
 	private class RotateClockwiseAction extends AbstractAction {
 		@Override public void actionPerformed(ActionEvent e) {
 			System.out.println("[RotateClockwise]");
-			comp.rotateDragTarget(comp.getDragInfo().getSelection(), true);
+			gamePanel.rotateDragTarget(gamePanel.dragInfo.getSelection(), true);
 		}
 	}
 
 	private class RotateCounterClockwiseAction extends AbstractAction {
 		@Override public void actionPerformed(ActionEvent e) {
 			System.out.println("[RotateCounterClockwise]");
-			comp.rotateDragTarget(comp.getDragInfo().getSelection(), false);
+			gamePanel.rotateDragTarget(gamePanel.dragInfo.getSelection(), false);
 		}
 	}
 }

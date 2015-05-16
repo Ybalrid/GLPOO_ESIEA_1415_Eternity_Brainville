@@ -34,8 +34,10 @@ public class DragInfo {
 		return this.selection;
 	}
 
-	public void setSelection(DragTarget selectionPanel) {
-		this.selection = selectionPanel;
+	public void setSelection(DragTarget selected) {
+		if (selected != null) selected.setSelected(true);
+		else if (this.selection != null) this.selection.setSelected(false);
+		this.selection = selected;
 	}
 	
 	public int getDraggingButton() {

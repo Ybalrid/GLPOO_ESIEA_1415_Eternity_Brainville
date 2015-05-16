@@ -11,6 +11,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import main.java.controller.Game;
+import main.java.gui.interaction.KeyShortcuts;
 import main.java.model.SaveDAO;
 
 public class MainWindow extends JFrame implements ActionListener {
@@ -37,6 +38,7 @@ public class MainWindow extends JFrame implements ActionListener {
 		this.constructMenu();
 		this.gamePanel = new GamePanel(game);
 		this.homePanel = new HomePanel(game);
+		new KeyShortcuts(this);
 
 		this.setVisible(true);
 		this.pack();

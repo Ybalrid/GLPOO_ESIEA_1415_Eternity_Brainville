@@ -21,7 +21,6 @@ import main.java.controller.Game;
 import main.java.gui.interaction.DragInfo;
 import main.java.gui.interaction.DragTarget;
 import main.java.gui.interaction.DropTarget;
-import main.java.gui.interaction.KeyShortcuts;
 
 public class GamePanel extends JPanel implements MouseListener, MouseMotionListener {
 
@@ -33,7 +32,7 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 	private JPanel containerEast;
 	private StockPanel stock;
 
-	private DragInfo dragInfo;
+	public static final DragInfo dragInfo = new DragInfo();
 	private boolean interactionAllowed;
 
 	public GamePanel(Game game) {
@@ -60,11 +59,9 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 		this.add(this.puzzle, BorderLayout.CENTER);
 		this.add(this.containerEast, BorderLayout.EAST);
 
-		this.dragInfo = new DragInfo();
 		this.interactionAllowed = true;
 		this.addMouseListener(this);
 		this.addMouseMotionListener(this);
-		new KeyShortcuts(this);
 		
 		this.dropTargets = new ArrayList<DropTarget>();
 		this.dragTargets = new ArrayList<DragTarget>();
@@ -157,10 +154,6 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 	{
 		return game;
 	}
-
-	public DragInfo getDragInfo() {
-		return this.dragInfo;
-	}
 	
 	public boolean isInteractionAllowed() {
 		return this.interactionAllowed;
@@ -171,7 +164,7 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 	}
 
 	public void rotateDragTarget(DragTarget dt, boolean clockwise) {
-		if (!this.isInteractionAllowed()) return;
+		if (!this.isInteractionAllowed() || dt == null) return;
 		dt.rotate(clockwise);
 		this.game.checkSolution();
 	}
@@ -221,6 +214,8 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 				this.add(dragTarget, 0);
 				this.repaint();
 			}
+		} else {
+			this.dragInfo.setSelection(null);
 		}
 	}
 
