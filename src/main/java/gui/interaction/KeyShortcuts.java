@@ -32,14 +32,14 @@ public class KeyShortcuts {
 	private class RotateClockwiseAction extends AbstractAction {
 		@Override public void actionPerformed(ActionEvent e) {
 			System.out.println("[RotateClockwise]");
-			comp.rotateSelection(true);
+			comp.rotateDragTarget(comp.getDragInfo().getSelection(), true);
 		}
 	}
 
 	private class RotateCounterClockwiseAction extends AbstractAction {
 		@Override public void actionPerformed(ActionEvent e) {
 			System.out.println("[RotateCounterClockwise]");
-			comp.rotateSelection(false);
+			comp.rotateDragTarget(comp.getDragInfo().getSelection(), false);
 		}
 	}
 }

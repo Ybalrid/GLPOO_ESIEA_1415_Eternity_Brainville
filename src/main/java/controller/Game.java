@@ -103,12 +103,15 @@ public class Game {
 		
 		// If solved, go to next
 		if (i == this.solution.getSize()) {
+			this.gamePanel.setInteractionAllowed(false);
+		
 			System.out.println("\n*** You just won the game ***\n");
 			JOptionPane.showMessageDialog(this.window, "You just won the game!");
 			
 			// Deferred call to next level
 			TIMER.schedule(new TimerTask() {
 				@Override public void run() {
+					gamePanel.setInteractionAllowed(true);
 					if (currentLevel == levelCount) {
 						startHome();
 					} else {
