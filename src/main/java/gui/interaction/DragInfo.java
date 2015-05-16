@@ -13,10 +13,13 @@ public class DragInfo {
 	private DropTarget origin;
 	// Component that is dragged
 	private DragTarget selection;
+	// Button that was initiated dragging, for use in MouseMotion callbacks
+	private int draggingButton;
 
 	public DragInfo () {
 		this.origin = null;
 		this.selection = null;
+		this.draggingButton = 0;
 	}
 
 	public DropTarget getOrigin() {
@@ -33,6 +36,14 @@ public class DragInfo {
 
 	public void setSelection(DragTarget selectionPanel) {
 		this.selection = selectionPanel;
+	}
+	
+	public int getDraggingButton() {
+		return this.draggingButton;
+	}
+
+	public void setDraggingButton(int draggingButton) {
+		this.draggingButton = draggingButton;
 	}
 
 	public void reset() {

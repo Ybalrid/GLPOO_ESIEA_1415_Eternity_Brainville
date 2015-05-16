@@ -34,9 +34,6 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 	private StockPanel stock;
 
 	private DragInfo dragInfo;
-	
-	private boolean canDrag = false;
-
 
 	public GamePanel(Game game) {
 		this.game = game;
@@ -193,17 +190,21 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 
 		Point globalPos = SwingUtilities.convertPoint(e.getComponent(), e.getPoint(), this);
 		//System.out.print("[Pressed] " + e.getButton() + " (" + globalPos.x + "," + globalPos.y + ") ");
+		
+		int pressedButton = e.getButton();
 		// Get what is under the cursor
 		Component pointed = this.findComponentAt(globalPos);
 
-		if (e.getButton() == MouseEvent.BUTTON3) {
+		if (pressedButton == MouseEvent.BUTTON3) {
 			// If it's a DragTarget, rotate it
 			if (pointed instanceof DragTarget) {
 				((PiecePanel)pointed).rotate(true);
 			}
 
-		} else if(e.getButton() == MouseEvent.BUTTON1) {
+		} else if (pressedButton == MouseEvent.BUTTON1) {
 			this.dragInfo.reset();
+			this.dragInfo.setDraggingButton(pressedButton);
+			
 			if (pointed instanceof DragTarget && this.dragInfo.getSelection() == null) {
 				DragTarget selection = (DragTarget)pointed;
 				DropTarget target = (DropTarget)selection.getParent();
@@ -214,23 +215,20 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 				target.repaint();
 				this.add(selection, 0);
 				this.repaint();
-				//System.out.println("Selection: " + selection + " ");
-				canDrag = true;
 			}
 		}
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		if(e.getButton() == MouseEvent.BUTTON1)
-			canDrag = false;
+		
 		Point globalPos = e.getPoint();
 		//System.out.println("[Released] " + e.getButton() + " (" + globalPos.x + "," + globalPos.y + ") ");
 
 		DropTarget origin = this.dragInfo.getOrigin();
 		DragTarget selection = this.dragInfo.getSelection();
 
-		if (e.getButton() != MouseEvent.BUTTON3 && selection != null) {
+		if (e.getButton() == this.dragInfo.getDraggingButton() && selection != null) {
 			Point p = e.getPoint();
 			DropTarget dest = origin;
 
@@ -256,6 +254,7 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 			this.remove(selection);
 			this.repaint();
 			////System.out.println("Unselection " + selection.getLocation() + " " + dest.getComponent(0));
+			this.dragInfo.setDraggingButton(MouseEvent.NOBUTTON);
 		}
 		this.game.checkSolution();
 	}
@@ -270,7 +269,8 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		DragTarget selection = this.dragInfo.getSelection();
-		if (canDrag && selection != null && e.getButton() != MouseEvent.BUTTON3) {
+		System.out.println("mouseDragged button: " + e.getButton());
+		if (selection != null && this.dragInfo.getDraggingButton() == 1) {
 			Point globalPos = e.getPoint();
 			//System.out.println("Drag selection: " + selection.getLocation() + " " + globalPos);
 			selection.setLocation(globalPos.x - selection.getWidth()/2, globalPos.y - selection.getHeight()/2);
