@@ -1,6 +1,7 @@
 package main.java.gui;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -99,14 +100,19 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 	public void createPiecePanels(Piece[] pieces) {
 		
 		int len = pieces.length;
+		ArrayList<Integer> indices = new ArrayList<Integer>(len);
+		for (int i = 0; i < len; i++) indices.add(i);
+		Collections.shuffle(indices);
+		
 		for (int i = 0; i < len; i++) {
 			PiecePanel p = new PiecePanel();
 			p.setBackground(Color.BLACK);
 			p.setPiece(pieces[i]);
+			
 			p.setRotation(Math.PI/2 * (int)(Math.random()*4));
 			p.repaint();
 			//this.stock.add(p, BorderLayout.WEST);
-			this.dropTargets.get(i).add(p, BorderLayout.WEST);
+			this.dropTargets.get(indices.get(i)).add(p, BorderLayout.WEST);
 			this.dragTargets.add(p);
 		}
 		this.puzzle.validate();
