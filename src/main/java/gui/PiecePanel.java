@@ -30,8 +30,6 @@ public class PiecePanel extends DragTarget {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;
-		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-				RenderingHints.VALUE_ANTIALIAS_ON);
 
 		//System.out.println("cell width & height: " + this.getWidth() + " " +this.getHeight());
 		if (this.img != null) {
@@ -40,17 +38,19 @@ public class PiecePanel extends DragTarget {
 			BufferedImage img;
 			
 			if (this.selected) {
-				System.out.println("Drawing selected PiecePanel");
 				img = new BufferedImage(iw, ih, BufferedImage.TYPE_INT_RGB);
+				// Add brightness and contrast for graphical feedback
 				RescaleOp rescaleOp = new RescaleOp(1.2f, 40, null);
 				rescaleOp.filter(this.img, img);
 			} else img = this.img;
 			
+			// Draw image centered and rotated
 			g2.rotate(-rotation, 50, 50);
 			g2.drawImage(img, (pw - iw)/2, (ph - ih)/2, 100, 100, null);
 			g2.rotate(rotation, 50, 50);
 			
 			if (this.selected) {
+				// White border
 				g2.setColor(Color.WHITE);
 				g2.setStroke(new BasicStroke(2));
 				g2.drawRect(0, 0, 99, 99);
@@ -67,6 +67,10 @@ public class PiecePanel extends DragTarget {
 		this.piece = piece;
 		this.img = PieceSynthetizer.synthetize(piece);
 		this.repaint();
+	}
+	
+	public BufferedImage getImage() {
+		return this.img;
 	}
 
 	public double getRotation() {

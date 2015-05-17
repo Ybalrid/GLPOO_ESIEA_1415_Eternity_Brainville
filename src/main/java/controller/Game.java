@@ -47,6 +47,10 @@ public class Game {
 		return this.levelCount;
 	}
 	
+	public int getCurrentLevelId() {
+		return this.currentLevel;
+	}
+	
 	public void startGame() {
 		this.currentLevel = 0;
 		this.window.loadGamePanel();

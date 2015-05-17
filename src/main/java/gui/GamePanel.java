@@ -35,9 +35,8 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 	public static final DragInfo dragInfo = new DragInfo();
 	private boolean interactionAllowed;
 
-	public GamePanel(Game game) {
-		this.game = game;
-		
+	// For a GamePanel without game logic interaction
+	public GamePanel() {
 		// setPreferredSize rather than setSize because of layout manager
 		// The contentPane excludes the menu
 		this.setPreferredSize(new Dimension(720,400));
@@ -59,12 +58,19 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 		this.add(this.puzzle, BorderLayout.CENTER);
 		this.add(this.containerEast, BorderLayout.EAST);
 
-		this.interactionAllowed = true;
+		// Mouse interaction
 		this.addMouseListener(this);
 		this.addMouseMotionListener(this);
 		
+		this.interactionAllowed = true;
 		this.dropTargets = new ArrayList<DropTarget>();
 		this.dragTargets = new ArrayList<DragTarget>();
+	}
+
+	// For a GamePanel with game logic interaction
+	public GamePanel(Game game) {
+		this();
+		this.game = game;
 	}
 
 	public void createGrid(int count) {
@@ -150,9 +156,16 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 		return pieces;
 	}
 	
-	public Game getGame()
-	{
-		return game;
+	public ArrayList<DropTarget> getDropTargets() {
+		return this.dropTargets;
+	}
+	
+	public ArrayList<DragTarget> getDragTargets() {
+		return this.dragTargets;
+	}
+	
+	public Game getGame() {
+		return this.game;
 	}
 	
 	public boolean isInteractionAllowed() {
@@ -166,6 +179,12 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 	public void rotateDragTarget(DragTarget dt, boolean clockwise) {
 		if (!this.isInteractionAllowed() || dt == null) return;
 		dt.rotate(clockwise);
+		this.update();
+	}
+	
+	// Update game logic associated to this component 
+	public void update() {
+		if (this.game == null) return;
 		this.game.checkSolution();
 	}
 
@@ -258,7 +277,7 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 			
 			this.dragInfo.setDraggingButton(MouseEvent.NOBUTTON);
 		}
-		this.game.checkSolution();
+		this.update();
 	}
 
 	/* MouseMotionEvent */

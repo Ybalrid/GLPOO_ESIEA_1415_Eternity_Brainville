@@ -108,18 +108,20 @@ public class MainWindow extends JFrame implements ActionListener {
 	*/
 	public void actionPerformed(ActionEvent e)
 	{
-		if(e.getSource() == (Object)itemQuitter)
+		if(e.getSource() == itemQuitter)
 			this.dispose();
 		
-		if(e.getSource() == (Object)itemNouvelle)
+		if(e.getSource() == itemNouvelle)
 		{
-			//create new game
-			this.gamePanel.getGame().startHome();		}
+			// Create new game
+			this.gamePanel.getGame().startHome();
+		}
 		
-		if(e.getSource() == (Object)itemSauver)
+		if(e.getSource() == itemSauver)
 		{
-			//If save file location unknown, open a dialog for selecting a save file,
-			//Save the game at the save file location
+			if (this.gamePanel.getGame().getCurrentLevelId() == 0) return;
+			// If save file location unknown, open a dialog for selecting a save file,
+			// save the game at the save file location
 			fc.showSaveDialog(this);
 			if(fc.getSelectedFile() != null)
 			{
@@ -130,7 +132,7 @@ public class MainWindow extends JFrame implements ActionListener {
 			
 		}
 		
-		if(e.getSource() == (Object)itemCharger)
+		if(e.getSource() == itemCharger)
 		{
 			fc.showOpenDialog(this);
 			if(fc.getSelectedFile() != null)
