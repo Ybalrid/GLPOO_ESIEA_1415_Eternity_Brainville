@@ -16,7 +16,7 @@ Equipe
 Installation
 ------------
 - Installer maven et eclipse comme pour le TD
-- dans la copie locale, faire "mvn clone install eclipse:eclipse"
+- dans la copie locale, faire "mvn clean install eclipse:eclipse"
 - Importer le projet dans eclipse
 - dans eclipse, faire *Project > Properties > Java Build Path > Sources*, retirer ce qu'eclipse a créé automatiquement, rajouter le dossier /src du projet uniquement.
 
